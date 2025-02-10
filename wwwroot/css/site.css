@@ -1,0 +1,120 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+form-body {
+    background-color: #f8f9fa;
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.btn-primary {
+    background: #007bff;
+    border: none;
+    transition: 0.3s;
+}
+
+    .btn-primary:hover {
+        background: #0056b3;
+        transform: scale(1.05);
+    }
+/* Hero Image */
+#heo-image {
+    width: 100%;
+    max-width: 1200px;
+    height: 600px;
+    object-fit: cover;
+    box-shadow: 0px 0px 0 #00000070;
+    border-top-left-radius: 3000px;
+    border-top-right-radius: 3000px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background: url('/Image/photo-15370.jpeg') center no-repeat;
+    position: relative;
+}
+.marquee-text {
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 24px; 
+    font-weight: bold;
+    color: cornflowerblue; 
+    font-family: 'Arial', sans-serif;
+}
+.image-box {
+    box-shadow: 0px 0px 20px #00000070;
+    padding: 100px 80px 100px 48px;
+    margin: 20px auto; /* Centers the div */
+    overflow: visible;
+    border-radius: 50px;
+    border: 2px solid inherit;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: scroll;
+    background-clip: padding-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 0px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Optional: Add Fade-in Effect */
+.image-box {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+    .image-box.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
