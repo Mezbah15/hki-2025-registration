@@ -1,8 +1,8 @@
 # Base image for runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+#EXPOSE 8080
+#EXPOSE 8081
 
 # Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
@@ -22,4 +22,8 @@ RUN dotnet publish "./hki-2025-registration.csproj" -c $BUILD_CONFIGURATION -o /
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+EXPOSE 8282
+ENV ASPNETCORE_URLS=http://+:8282
+
 ENTRYPOINT ["dotnet", "hki-2025-registration.dll"]
