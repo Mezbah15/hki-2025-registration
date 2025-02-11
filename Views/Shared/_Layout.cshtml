@@ -1,52 +1,85 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - hki_2025_registration</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/hki_2025_registration.styles.css" asp-append-version="true" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] hki-registration-2025</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/hki_2025_registration.styles.css" asp-append-version="true" />
+	<link rel="icon" type="image/jpeg" href="/Image/logo.jpg">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm  navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <img style="margin-left:100px" src="/Image/logo.jpg" alt="Site Logo" width="50" class="d-inline-block align-text-top; navbar-brand">
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+			<div class="container-fluid">
+				<!-- Logo -->
+				<a class="navbar-brand" href="#">
+					<img style="margin-left: 20px;" src="/Image/logo.jpg" alt="Site Logo" width="50" class="d-inline-block align-text-top">
+				</a>
 
-               
+				<!-- Toggler Button for Small Screens -->
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-center w-100">
-                    <ul class="navbar-nav w-100 text-center">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><h5 style="color:#0DCAF0;">Home</h5></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About"><h5>About</h5></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact"><H5>Contact</H5></a>
-                        </li>
-                    </ul>               
-                </div>
-               
-            </div>
-        </nav>        
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+				<!-- Navbar Links (Centered) -->
+				<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+					<ul class="navbar-nav mx-auto text-center">
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+								<h5 style="color:#0056B3;">Home</h5>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">
+								<h5>About</h5>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">
+								<h5>Contact</h5>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - hki_2025_registration - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+	<button id="scrollBtn" class="scroll-btn">
+		<i class="fas fa-arrow-down"></i>
+	</button>
+
+
+	<footer class="border-top text-white" style="background: linear-gradient(30deg, #1e3c72, #2a5298); padding: 15px 0;">
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-md-4 text-start">
+					<!-- You can add content here if needed -->
+				</div>
+				<div class="col-md-3 text-end pe-3">
+					All Rights Reserved &copy; HKI-2025
+				</div>
+				<div class="col text-end fw-bold pe-4">
+					SmartWorkBD
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("hki-2025-registration")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33892c60c4de443adf236a3147a252ea2ba64c53")]
 [assembly: System.Reflection.AssemblyProductAttribute("hki-2025-registration")]
 [assembly: System.Reflection.AssemblyTitleAttribute("hki-2025-registration")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

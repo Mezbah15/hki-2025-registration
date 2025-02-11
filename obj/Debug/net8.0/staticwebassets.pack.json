@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\hki-2025-registration.os1vseijmc.bundle.scp.css"
     },
     {
+      "Id": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\hadith.jpg",
+      "PackagePath": "staticwebassets\\Image\\hadith.jpg"
+    },
+    {
       "Id": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\hki-poster.png",
       "PackagePath": "staticwebassets\\Image\\hki-poster.png"
     },
@@ -13,8 +17,16 @@
       "PackagePath": "staticwebassets\\Image\\logo.jpg"
     },
     {
+      "Id": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\mosjid.jpg",
+      "PackagePath": "staticwebassets\\Image\\mosjid.jpg"
+    },
+    {
       "Id": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\photo-15370.jpeg",
       "PackagePath": "staticwebassets\\Image\\photo-15370.jpeg"
+    },
+    {
+      "Id": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\quran.png",
+      "PackagePath": "staticwebassets\\Image\\quran.png"
     },
     {
       "Id": "D:\\Projects\\hki-2025-registration\\wwwroot\\css\\site.css",

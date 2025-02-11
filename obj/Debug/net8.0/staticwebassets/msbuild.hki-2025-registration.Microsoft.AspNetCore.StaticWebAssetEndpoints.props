@@ -1,16 +1,16 @@
 ﻿<Project>
   <ItemGroup>
-    <StaticWebAssetEndpoint Include="_content/hki-2025-registration/css/site.8k62m10bpj.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"8k62m10bpj"},{"Name":"integrity","Value":"sha256-uMehCq2dm8QeniZK2CUaMaVfs98ETkZsd4iAA8FD5ZQ="},{"Name":"label","Value":"_content/hki-2025-registration/css/site.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2506"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022uMehCq2dm8QeniZK2CUaMaVfs98ETkZsd4iAA8FD5ZQ=\u0022"},{"Name":"Last-Modified","Value":"Mon, 10 Feb 2025 15:05:22 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/hki-2025-registration/css/site.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-uMehCq2dm8QeniZK2CUaMaVfs98ETkZsd4iAA8FD5ZQ="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"2506"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022uMehCq2dm8QeniZK2CUaMaVfs98ETkZsd4iAA8FD5ZQ=\u0022"},{"Name":"Last-Modified","Value":"Mon, 10 Feb 2025 15:05:22 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-/W8XaszSqcOvwBhRgi82eUIeBvbLs3tGXNJxdxirGiE="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3326"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022/W8XaszSqcOvwBhRgi82eUIeBvbLs3tGXNJxdxirGiE=\u0022"},{"Name":"Last-Modified","Value":"Tue, 11 Feb 2025 06:27:31 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/hki-2025-registration/css/site.v14e4g8plb.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"v14e4g8plb"},{"Name":"integrity","Value":"sha256-/W8XaszSqcOvwBhRgi82eUIeBvbLs3tGXNJxdxirGiE="},{"Name":"label","Value":"_content/hki-2025-registration/css/site.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3326"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022/W8XaszSqcOvwBhRgi82eUIeBvbLs3tGXNJxdxirGiE=\u0022"},{"Name":"Last-Modified","Value":"Tue, 11 Feb 2025 06:27:31 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/hki-2025-registration/favicon.61n19gt1b8.ico">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</AssetFile>
@@ -36,6 +36,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"os1vseijmc"},{"Name":"integrity","Value":"sha256-2I58cBlJFChJ38M9KX4We2pw03uqx\u002BdARfdpOTHFOAI="},{"Name":"label","Value":"_content/hki-2025-registration/hki-2025-registration.bundle.scp.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1139"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00222I58cBlJFChJ38M9KX4We2pw03uqx\u002BdARfdpOTHFOAI=\u0022"},{"Name":"Last-Modified","Value":"Sun, 09 Feb 2025 11:55:53 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/hki-2025-registration/Image/hadith.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Image\hadith.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-BCloEys185j68o6xld74XnP83NuTVNPOZwC5jVzSCI8="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"48819"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022BCloEys185j68o6xld74XnP83NuTVNPOZwC5jVzSCI8=\u0022"},{"Name":"Last-Modified","Value":"Tue, 11 Feb 2025 06:43:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/hki-2025-registration/Image/hadith.swm4m1lvww.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Image\hadith.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"swm4m1lvww"},{"Name":"integrity","Value":"sha256-BCloEys185j68o6xld74XnP83NuTVNPOZwC5jVzSCI8="},{"Name":"label","Value":"_content/hki-2025-registration/Image/hadith.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"48819"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022BCloEys185j68o6xld74XnP83NuTVNPOZwC5jVzSCI8=\u0022"},{"Name":"Last-Modified","Value":"Tue, 11 Feb 2025 06:43:53 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/hki-2025-registration/Image/hki-poster.guf8gauew9.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Image\hki-poster.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -60,6 +72,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-RYjouFRE3uff846i0RIPybTPvrmXb60oFxb667awvZk="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"28438"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022RYjouFRE3uff846i0RIPybTPvrmXb60oFxb667awvZk=\u0022"},{"Name":"Last-Modified","Value":"Sun, 09 Feb 2025 15:51:56 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/hki-2025-registration/Image/mosjid.3ivyra97av.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Image\mosjid.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"3ivyra97av"},{"Name":"integrity","Value":"sha256-\u002B4YIIL8vc/4kbLk8UXNdcpa80USZrYOm1x3RLl/u3Sk="},{"Name":"label","Value":"_content/hki-2025-registration/Image/mosjid.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"2347093"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022\u002B4YIIL8vc/4kbLk8UXNdcpa80USZrYOm1x3RLl/u3Sk=\u0022"},{"Name":"Last-Modified","Value":"Tue, 11 Feb 2025 06:11:47 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/hki-2025-registration/Image/mosjid.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Image\mosjid.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-\u002B4YIIL8vc/4kbLk8UXNdcpa80USZrYOm1x3RLl/u3Sk="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"2347093"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022\u002B4YIIL8vc/4kbLk8UXNdcpa80USZrYOm1x3RLl/u3Sk=\u0022"},{"Name":"Last-Modified","Value":"Tue, 11 Feb 2025 06:11:47 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/hki-2025-registration/Image/photo-15370.1y3izwr6s1.jpeg">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Image\photo-15370.jpeg'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
@@ -71,6 +95,18 @@
       <Selectors><![CDATA[[]]]></Selectors>
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-eZfOGfYuZyNqMPQ8y8UadUUlOs1j9JYSUtDZxiRpwKo="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"90089"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022eZfOGfYuZyNqMPQ8y8UadUUlOs1j9JYSUtDZxiRpwKo=\u0022"},{"Name":"Last-Modified","Value":"Sun, 09 Feb 2025 13:07:15 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/hki-2025-registration/Image/quran.6rmm9lw579.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Image\quran.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"6rmm9lw579"},{"Name":"integrity","Value":"sha256-snn6ZCRfuJxoY9DV6SpC92434U3FFeAoVv\u002BWJNaTSpI="},{"Name":"label","Value":"_content/hki-2025-registration/Image/quran.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"18201939"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022snn6ZCRfuJxoY9DV6SpC92434U3FFeAoVv\u002BWJNaTSpI=\u0022"},{"Name":"Last-Modified","Value":"Tue, 11 Feb 2025 06:07:21 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/hki-2025-registration/Image/quran.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Image\quran.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-snn6ZCRfuJxoY9DV6SpC92434U3FFeAoVv\u002BWJNaTSpI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"18201939"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022snn6ZCRfuJxoY9DV6SpC92434U3FFeAoVv\u002BWJNaTSpI=\u0022"},{"Name":"Last-Modified","Value":"Tue, 11 Feb 2025 06:07:21 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/hki-2025-registration/js/site.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>

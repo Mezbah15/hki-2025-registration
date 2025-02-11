@@ -8,19 +8,17 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+
 }
 
+/*form */
 form-body {
     background-color: #f8f9fa;
 }
@@ -53,7 +51,7 @@ form-body {
 }
 
 .btn-primary {
-    background: #007bff;
+    background: #0056b3;
     border: none;
     transition: 0.3s;
 }
@@ -62,59 +60,161 @@ form-body {
         background: #0056b3;
         transform: scale(1.05);
     }
-/* Hero Image */
-#heo-image {
-    width: 100%;
-    max-width: 1200px;
-    height: 600px;
-    object-fit: cover;
-    box-shadow: 0px 0px 0 #00000070;
-    border-top-left-radius: 3000px;
-    border-top-right-radius: 3000px;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    background: url('/Image/photo-15370.jpeg') center no-repeat;
-    position: relative;
-}
+
 .marquee-text {
     display: block;
     width: 100%;
-    padding: 15px 0;
-    font-size: 24px; 
-    font-weight: bold;
+    padding: 0px 10px;
+    font-size: 20px; 
     color: cornflowerblue; 
     font-family: 'Arial', sans-serif;
 }
-.image-box {
-    box-shadow: 0px 0px 20px #00000070;
-    padding: 100px 80px 100px 48px;
-    margin: 20px auto; /* Centers the div */
-    overflow: visible;
-    border-radius: 50px;
-    border: 2px solid inherit;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-attachment: scroll;
-    background-clip: padding-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: nowrap;
-    gap: 0px;
-    max-width: 1200px;
-    width: 100%;
+
+/* Section 1*/
+.custom-section {
+    padding: 20px 0;
+    text-align: center;
 }
 
-/* Optional: Add Fade-in Effect */
-.image-box {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-}
-
-    .image-box.show {
-        opacity: 1;
-        transform: translateY(0);
+    /* Larger Image */
+    .custom-section img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     }
+
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+    .custom-section {
+        padding: 40px 15px;
+    }
+
+        .custom-section img {
+            max-width: 100%;
+        }
+
+    .custom-btn {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+    }
+}
+/* Section 1 End*/
+/* Rules CSS*/
+@media (max-width: 768px) {
+    #contact {
+        display: none;
+    }
+}
+
+#rules-container {
+    max-width: 700px;
+    background: #f0f8ff; /* Light Blue Background */
+    color: #000; /* Black Text */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: auto;
+    font-family: Arial, sans-serif;
+}
+
+.competition-rules h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.competition-rules p {
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+/* Rules CSS End*/
+
+/* Prize Card CSS */
+.card {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+.card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    object-fit: cover;
+    height: 180px;
+}
+
+.card-body {
+    background-color: #f8f9fa;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #343a40;
+    line-height: 1.6;
+}
+
+    .card-text strong {
+        font-weight: bold;
+        color: #28a745;
+    }
+
+/* Responsive Spacing */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 15px;
+    }
+}
+/* Price Card CSS End*/
+
+/* Scroll Button Styling */
+.scroll-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #007bff, #6610f2);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 22px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0.8;
+}
+
+    .scroll-btn:hover {
+        transform: scale(1.1);
+        opacity: 1;
+        background: linear-gradient(45deg, #6610f2, #007bff);
+    }
+
+    /* Arrow Rotation Effect */
+    .scroll-btn i {
+        transition: transform 0.3s ease-in-out;
+    }
+

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "aKT1mcpPNelBOHR2aWvqcaGheqNT5hqBQf1UVEUUywU=",
+  "Hash": "G9y9Boi55azwzPi5sE0Q5YGtf2chSjxy3het6ipnD98=",
   "Source": "hki-2025-registration",
   "BasePath": "_content/hki-2025-registration",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "8k62m10bpj",
-      "Integrity": "uMehCq2dm8QeniZK2CUaMaVfs98ETkZsd4iAA8FD5ZQ=",
+      "Fingerprint": "v14e4g8plb",
+      "Integrity": "/W8XaszSqcOvwBhRgi82eUIeBvbLs3tGXNJxdxirGiE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -99,6 +99,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\hadith.jpg",
+      "SourceId": "hki-2025-registration",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\hki-2025-registration\\wwwroot\\",
+      "BasePath": "_content/hki-2025-registration",
+      "RelativePath": "Image/hadith#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "swm4m1lvww",
+      "Integrity": "BCloEys185j68o6xld74XnP83NuTVNPOZwC5jVzSCI8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\hadith.jpg"
     },
     {
       "Identity": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\hki-poster.png",
@@ -143,6 +164,27 @@
       "OriginalItemSpec": "wwwroot\\Image\\logo.jpg"
     },
     {
+      "Identity": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\mosjid.jpg",
+      "SourceId": "hki-2025-registration",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\hki-2025-registration\\wwwroot\\",
+      "BasePath": "_content/hki-2025-registration",
+      "RelativePath": "Image/mosjid#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3ivyra97av",
+      "Integrity": "+4YIIL8vc/4kbLk8UXNdcpa80USZrYOm1x3RLl/u3Sk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\mosjid.jpg"
+    },
+    {
       "Identity": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\photo-15370.jpeg",
       "SourceId": "hki-2025-registration",
       "SourceType": "Discovered",
@@ -162,6 +204,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Image\\photo-15370.jpeg"
+    },
+    {
+      "Identity": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\quran.png",
+      "SourceId": "hki-2025-registration",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\hki-2025-registration\\wwwroot\\",
+      "BasePath": "_content/hki-2025-registration",
+      "RelativePath": "Image/quran#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6rmm9lw579",
+      "Integrity": "snn6ZCRfuJxoY9DV6SpC92434U3FFeAoVv+WJNaTSpI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\quran.png"
     },
     {
       "Identity": "D:\\Projects\\hki-2025-registration\\wwwroot\\js\\site.js",
@@ -1384,51 +1447,6 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/site.8k62m10bpj.css",
-      "AssetFile": "D:\\Projects\\hki-2025-registration\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2506"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"uMehCq2dm8QeniZK2CUaMaVfs98ETkZsd4iAA8FD5ZQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 10 Feb 2025 15:05:22 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "8k62m10bpj"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-uMehCq2dm8QeniZK2CUaMaVfs98ETkZsd4iAA8FD5ZQ="
-        }
-      ]
-    },
-    {
       "Route": "css/site.css",
       "AssetFile": "D:\\Projects\\hki-2025-registration\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -1439,7 +1457,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2506"
+          "Value": "3326"
         },
         {
           "Name": "Content-Type",
@@ -1447,11 +1465,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"uMehCq2dm8QeniZK2CUaMaVfs98ETkZsd4iAA8FD5ZQ=\""
+          "Value": "\"/W8XaszSqcOvwBhRgi82eUIeBvbLs3tGXNJxdxirGiE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 10 Feb 2025 15:05:22 GMT"
+          "Value": "Tue, 11 Feb 2025 06:27:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1461,7 +1479,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-uMehCq2dm8QeniZK2CUaMaVfs98ETkZsd4iAA8FD5ZQ="
+          "Value": "sha256-/W8XaszSqcOvwBhRgi82eUIeBvbLs3tGXNJxdxirGiE="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.v14e4g8plb.css",
+      "AssetFile": "D:\\Projects\\hki-2025-registration\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3326"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/W8XaszSqcOvwBhRgi82eUIeBvbLs3tGXNJxdxirGiE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 06:27:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "v14e4g8plb"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/W8XaszSqcOvwBhRgi82eUIeBvbLs3tGXNJxdxirGiE="
         }
       ]
     },
@@ -1712,6 +1775,88 @@
       ]
     },
     {
+      "Route": "Image/hadith.jpg",
+      "AssetFile": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\hadith.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "48819"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BCloEys185j68o6xld74XnP83NuTVNPOZwC5jVzSCI8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 06:43:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-BCloEys185j68o6xld74XnP83NuTVNPOZwC5jVzSCI8="
+        }
+      ]
+    },
+    {
+      "Route": "Image/hadith.swm4m1lvww.jpg",
+      "AssetFile": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\hadith.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "48819"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BCloEys185j68o6xld74XnP83NuTVNPOZwC5jVzSCI8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 06:43:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "swm4m1lvww"
+        },
+        {
+          "Name": "label",
+          "Value": "Image/hadith.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-BCloEys185j68o6xld74XnP83NuTVNPOZwC5jVzSCI8="
+        }
+      ]
+    },
+    {
       "Route": "Image/hki-poster.guf8gauew9.png",
       "AssetFile": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\hki-poster.png",
       "Selectors": [],
@@ -1876,6 +2021,88 @@
       ]
     },
     {
+      "Route": "Image/mosjid.3ivyra97av.jpg",
+      "AssetFile": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\mosjid.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2347093"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+4YIIL8vc/4kbLk8UXNdcpa80USZrYOm1x3RLl/u3Sk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 06:11:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3ivyra97av"
+        },
+        {
+          "Name": "label",
+          "Value": "Image/mosjid.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+4YIIL8vc/4kbLk8UXNdcpa80USZrYOm1x3RLl/u3Sk="
+        }
+      ]
+    },
+    {
+      "Route": "Image/mosjid.jpg",
+      "AssetFile": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\mosjid.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2347093"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+4YIIL8vc/4kbLk8UXNdcpa80USZrYOm1x3RLl/u3Sk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 06:11:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+4YIIL8vc/4kbLk8UXNdcpa80USZrYOm1x3RLl/u3Sk="
+        }
+      ]
+    },
+    {
       "Route": "Image/photo-15370.1y3izwr6s1.jpeg",
       "AssetFile": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\photo-15370.jpeg",
       "Selectors": [],
@@ -1954,6 +2181,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-eZfOGfYuZyNqMPQ8y8UadUUlOs1j9JYSUtDZxiRpwKo="
+        }
+      ]
+    },
+    {
+      "Route": "Image/quran.6rmm9lw579.png",
+      "AssetFile": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\quran.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18201939"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"snn6ZCRfuJxoY9DV6SpC92434U3FFeAoVv+WJNaTSpI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 06:07:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6rmm9lw579"
+        },
+        {
+          "Name": "label",
+          "Value": "Image/quran.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-snn6ZCRfuJxoY9DV6SpC92434U3FFeAoVv+WJNaTSpI="
+        }
+      ]
+    },
+    {
+      "Route": "Image/quran.png",
+      "AssetFile": "D:\\Projects\\hki-2025-registration\\wwwroot\\Image\\quran.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18201939"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"snn6ZCRfuJxoY9DV6SpC92434U3FFeAoVv+WJNaTSpI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 11 Feb 2025 06:07:21 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-snn6ZCRfuJxoY9DV6SpC92434U3FFeAoVv+WJNaTSpI="
         }
       ]
     },

@@ -18,7 +18,11 @@ namespace hki_2025_registration.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult About()
         {
             return View();
         }

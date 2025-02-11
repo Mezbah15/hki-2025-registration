@@ -1,8 +1,11 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\Image\hadith.jpg
 wwwroot\Image\hki-poster.png
 wwwroot\Image\logo.jpg
+wwwroot\Image\mosjid.jpg
 wwwroot\Image\photo-15370.jpeg
+wwwroot\Image\quran.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

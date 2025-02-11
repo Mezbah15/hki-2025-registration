@@ -32,3 +32,4 @@ D:\Projects\hki-2025-registration\obj\Debug\net8.0\refint\hki-2025-registration.
 D:\Projects\hki-2025-registration\obj\Debug\net8.0\hki-2025-registration.pdb
 D:\Projects\hki-2025-registration\obj\Debug\net8.0\hki-2025-registration.genruntimeconfig.cache
 D:\Projects\hki-2025-registration\obj\Debug\net8.0\ref\hki-2025-registration.dll
+D:\Projects\hki-2025-registration\obj\Debug\net8.0\hki-2025-registration.sourcelink.json
