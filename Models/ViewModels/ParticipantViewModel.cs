@@ -26,5 +26,50 @@ namespace hki_2025_registration.Models.ViewModels
 
         public string Choice { get; set; }
         public IFormFile Image { get; set; }
+
+
+        internal async Task<Participant> ToDomainAsync()
+        {
+            var participant = new Participant
+            {
+                Name = Name,
+                FatherName = FatherName,
+                Contact = Contact,
+                Email = Email,
+                Area = Area,
+                Address = Address,
+                Institute = Institute,
+                DoB = DoB,
+                Choice = Choice,
+                CreatePaymentResponse = "test",
+                InvoiceNumber = GenerateInvoiceNumber(),
+                Image = await SaveImageAsync(Image),
+            };
+
+            return participant;
+        }
+
+        private string GenerateInvoiceNumber()
+        {
+            return $"INV-{DateTime.Now:yyyyMMddHHmmss}-{Guid.NewGuid().ToString().Substring(0, 8)}";
+        }
+
+        private async Task<string> SaveImageAsync(IFormFile image)
+        {
+            var imagesDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+            if (!Directory.Exists(imagesDirectory))
+            {
+                Directory.CreateDirectory(imagesDirectory);
+            }
+
+            var imageFileName = $"{Guid.NewGuid()}_{image.FileName}";
+            var imagePath = Path.Combine(imagesDirectory, imageFileName);
+            using (var stream = new FileStream(imagePath, FileMode.Create))
+            {
+                await image.CopyToAsync(stream);
+            }
+
+            return imageFileName;
+        }
     }
 }

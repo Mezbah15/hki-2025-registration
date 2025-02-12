@@ -1,110 +1,116 @@
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using hki_2025_registration.Models;
 using hki_2025_registration.Models.ViewModels;
+using hki_2025_registration.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.DotNet.Scaffolding.Shared.CodeModifier.CodeChange;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace hki_2025_registration.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly string baseUrl = "https://api.bkash.com"; // Replace with actual base URL
-        private readonly string username = "your-username"; // Replace with actual username
-        private readonly string password = "your-password"; // Replace with actual password
-        private readonly string appKey = "test_app_key"; // Replace with actual app key
-        private readonly string appSecret = "test_app_secret"; // Replace with actual app secret
+        private readonly ApplicationDbContext _context;
+        private readonly BkashService _bkashService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, BkashService bkashService)
         {
             _logger = logger;
+            _context = context;
+            _bkashService = bkashService;
         }
+
         public IActionResult Index()
         {
             var model = new ParticipantViewModel();
-
             return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Index(ParticipantViewModel model)
         {
-            var client = new RestClient($"https://tokenized.sandbox.bka.sh/v1.2.0-beta/tokenized/checkout/token/grant/");
-            var request = new RestRequest();
-            request.Method = RestSharp.Method.Post;
-            // Set Headers
-            request.AddHeader("Content-Type", "application/json");
-            request.AddHeader("Accept", "application/json");
-            request.AddHeader("username", "01770618567");
-            request.AddHeader("password", "D7DaC<*E*eG");
+            if (!ModelState.IsValid)
+                return View(model);
 
-            // Request Body
-            var requestBody = new
+            try
             {
-                app_key = "0vWQuCRGiUX7EPVjQDr0EUAYtc",
-                app_secret = "jcUNPBgbcqEDedNKdvE4G1cAK7D3hCjmJccNPZZBq96QIxxwAMEx"
-            };
+                if (!Regex.IsMatch(model.Contact, @"^(?:\+88|88)?(01[3-9]\d{8})$"))
+                {
+                    ModelState.AddModelError("Contact", "Invalid contact number format.");
+                    return View(model);
+                }
 
-            request.AddJsonBody(JsonConvert.SerializeObject(requestBody));
+                var participant = await model.ToDomainAsync();
+                var paymentResponse = await _bkashService.CreatePaymentAsync(participant.InvoiceNumber, 500, participant.Contact);
+                participant.CreatePaymentResponse = JsonConvert.SerializeObject(paymentResponse);
+                participant.PaymentId = paymentResponse.paymentID;
+                participant.PaymentStatus = paymentResponse.transactionStatus;
 
-            // Execute Request
-            var response = await client.ExecuteAsync(request);
+                _context.Participants.Add(participant);
+                await _context.SaveChangesAsync();
 
-            BkashTokenResponse tokenResponse;
-            if (response.IsSuccessful)
-            {
-                tokenResponse = JsonConvert.DeserializeObject<BkashTokenResponse>(response.Content);
+                _logger.LogInformation("Participant {ParticipantId} created successfully with payment ID {PaymentId}", participant.Id, paymentResponse.paymentID);
+
+                return Redirect(paymentResponse.bkashURL);
             }
-            else
+            catch (Exception ex)
             {
-                return View();
+                _logger.LogError(ex, "Error occurred while processing payment for participant {ParticipantId}", model.Id);
+                ModelState.AddModelError(string.Empty, "Something went wrong, Contact Administrator.");
+                return View(model);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Callback(string? apiVersion, string? product, string paymentID, string status, string? signature)
+        {
+            try
+            {
+                var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+                _logger.LogInformation("Callback received from IP: {IpAddress}", ipAddress);
+
+                var participant = await _context.Participants.FirstOrDefaultAsync(p => p.PaymentId == paymentID);
+                if (participant == null)
+                {
+                    _logger.LogError("Participant not found for payment ID {PaymentId}", paymentID);
+                    //return NotFound();
+                }
+                else
+                {
+                    if (status == "success")
+                    {
+                        participant.PaymentStatus = "Success";
+                        _logger.LogInformation("Payment successful for participant {ParticipantId} with payment ID {PaymentId}", participant.Id, paymentID);
+                    }
+                    else if (status == "failure")
+                    {
+                        participant.PaymentStatus = "Failure";
+                        _logger.LogInformation("Payment failed for participant {ParticipantId} with payment ID {PaymentId}", participant.Id, paymentID);
+                    }
+                    else if (status == "cancel")
+                    {
+                        participant.PaymentStatus = "Cancelled";
+                        _logger.LogInformation("Payment cancelled for participant {ParticipantId} with payment ID {PaymentId}", participant.Id, paymentID);
+                    }
+
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while processing callback for payment ID {PaymentId}", paymentID);
             }
 
-            var client1 = new RestClient($"https://tokenized.sandbox.bka.sh/v1.2.0-beta/tokenized/checkout/create");
-            var request1 = new RestRequest();
-            request1.Method = RestSharp.Method.Post;
-
-            // Set headers
-            request1.AddHeader("Content-Type", "application/json");
-            request1.AddHeader("Accept", "application/json");
-            request1.AddHeader("authorization", tokenResponse.id_token);
-            request1.AddHeader("x-app-key", "0vWQuCRGiUX7EPVjQDr0EUAYtc");
-
-            // Request body
-                var   requestBody1 = new
-            {
-                mode = "0011",
-                payerReference = "01723888888",
-                callbackURL = "https://hki-2025.com/",
-                merchantAssociationInfo = "MI05MID54RF09123456One",
-                amount = "500",
-                currency = "BDT",
-                intent = "sale",
-                merchantInvoiceNumber = "Inv0124"
-                };
-
-            request1.AddJsonBody(JsonConvert.SerializeObject(requestBody1));
-
-            // Execute request
-            var response1 = await client1.ExecuteAsync(request1);
-
-            if (response1.IsSuccessful)
-            {
-                var responseData = response1.Content;
-                return Content(responseData, "application/json");
-            }
-            else
-            {
-                return Content($"Error: {response1.StatusCode} - {response1.Content}", "text/plain");
-            }
+            return RedirectToAction("Index");
         }
 
         public IActionResult Contact()
         {
             return View();
         }
+
         public IActionResult About()
         {
             return View();
