@@ -1,23 +1,49 @@
-﻿@{
+﻿@using hki_2025_registration.Models.ViewModels
+@model ParticipantViewModel
+@{
 	ViewData["Title"] = "";
 }
 <head>
 </head>
 <marquee class="marquee-text" behavior="scroll" direction="left" scrollamount="8">
-	📢 হামদ্-নাত, কিরাত ও ইসলামি সাধারণজ্ঞান প্রতিযোগীতার রেজিস্ট্রেশনের শেষ সময় ২৭ ফেব্রুয়ারি ২০২৫ রাত ৯ টা পর্যন্ত
-	📢
+	📢 খুব শীঘ্রই অনলাইন  রেজিস্ট্রেশন শুরু হবে ইনশাআল্লাহ 📢
 </marquee>
 
 <section class="container custom-section">
 	<div class="row justify-content-center">
 		<div class="col-md-10">
-			<img class="img-fluid" src="/Image/hki-poster.png" alt="Poster">
+			<img class="img-fluid" src="/Image/hki-poster.webp" alt="Poster">
 		</div>
 	</div>
-	<div class="mt-4">
-		<a href="#form" class="btn btn-primary" style="margin-top:10px">
-			রেজিস্ট্রেশন করুন
-		</a>
+</section>
+
+<section id="reg-btn" class="container">
+	<div class="row g-3 justify-content-center">
+
+		<!-- First Card -->
+		<div class="col-md-3 col-12">
+			<div id="reg-card" class="card text-center shadow-sm d-flex align-items-center justify-content-center">
+				<div class="card-body">
+					<p class="card-text">
+						<strong>প্রতিযোগীতায় অংশ নিতে</strong>
+					</p>
+					<a id="reg-card-custom-btn" href="#form" class="btn btn-primary">রেজিস্ট্রেশন করুন</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Second Card -->
+		<div class="col-md-4 col-12">
+			<div id="reg-card" class="card text-center shadow-sm d-flex align-items-center justify-content-center">
+				<div class="card-body">
+					<p class="card-text">
+						<strong>ইসলামিক বাণিজ্য মেলা ২০২৫</strong>
+					</p>
+					<a id="reg-card-custom-btn" href="#" class="btn btn-success">স্টল দিতে রেজিস্ট্রেশন করুন</a>
+				</div>
+			</div>
+		</div>
+
 	</div>
 </section>
 
@@ -25,7 +51,7 @@
 	<div class="row g-4">
 		<div class="col-md-4 col-12">
 			<div class="card">
-				<img src="/Image/quran.png" class="card-img-top" alt="কিরাত">
+				<img src="/Image/quran1.webp" class="card-img-top" alt="কিরাত">
 				<div class="card-body">
 					<h5 class="card-title">ক. গ্রুপ- কিরাত</h5>
 					<p class="card-text">
@@ -38,7 +64,7 @@
 		</div>
 		<div class="col-md-4 col-12">
 			<div class="card">
-				<img src="/Image/mosjid.jpg" class="card-img-top" alt="হামদ্-নাত">
+				<img src="/Image/mosjid.webp" class="card-img-top" alt="হামদ্-নাত">
 				<div class="card-body">
 					<h5 class="card-title">খ. গ্রুপ- হামদ্-নাত</h5>
 					<p class="card-text">
@@ -51,7 +77,7 @@
 		</div>
 		<div class="col-md-4 col-12">
 			<div class="card">
-				<img src="/Image/hadith.jpg" class="card-img-top" alt="ইসলামী সাধারণজ্ঞান">
+				<img src="/Image/hadith.webp" class="card-img-top" alt="ইসলামী সাধারণজ্ঞান">
 				<div class="card-body">
 					<h5 class="card-title">গ. গ্রুপ- ইসলামী সাধারণজ্ঞান</h5>
 					<p class="card-text">
@@ -59,6 +85,28 @@
 						<strong>২য় পুরষ্কার:</strong> মাইক্রোওভেন ১টি <br>
 						<strong>৩য় পুরষ্কার:</strong> বাই-সাইকেল ১টি
 					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="gold-medal-section" class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-6 col-12">
+			<div id="goldMedalCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+				<div class="carousel-inner">
+
+					<!-- Slide 1 -->
+					<div class="carousel-item active">
+						<div id="card-gold" class="card text-center shadow-sm">
+							<div class="card-body">
+								<p class="card-text"><strong>সেরাদের সেরা একজন পাবেন</strong></p>
+								<h5 class="card-title">মরহুম রহিম উদ্দিন ভরসা</h5>
+								<p class="card-text"><strong>স্মৃতি স্বর্ণ পদক</strong></p>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -98,13 +146,13 @@
 						</p>
 					</div>
 				</div>
-			<div class="card">
-				<div class="card-body">
-					<p class="card-text">
-						সার্বিক তত্ত্বাবধানে  আলহাজ্ব এমদাদুল হক ভরসা
-					</p>
+				<div class="card">
+					<div class="card-body">
+						<p class="card-text">
+							সার্বিক তত্ত্বাবধানে  আলহাজ্ব এমদাদুল হক ভরসা
+						</p>
+					</div>
 				</div>
-			</div>
 			</div>
 		</div>
 		<div class="col">
@@ -138,79 +186,87 @@
 			<h2 class="text-center mb-4">
 				রেজিস্ট্রেশন ফরম
 			</h2>
-			<form action="#" method="POST" enctype="multipart/form-data">
-
+			<form asp-action="Index" asp-controller="Home" method="POST" enctype="multipart/form-data">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 				<div class="mb-3">
-					<label for="name" class="form-label">নাম:</label>
-					<input type="text" class="form-control" id="name" name="name" required>
+					<label asp-for="Name" class="form-label">নাম:</label>
+					<input asp-for="Name" class="form-control">
+					<span asp-validation-for="Name" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
-					<label for="father_name" class="form-label">পিতার নাম:</label>
-					<input type="text" class="form-control" id="father_name" name="father_name" required>
-				</div>
-				<div class="mb-3">
-					<label for="phone" class="form-label">মোবাইল নম্বর:</label>
-					<input type="tel" class="form-control" id="phone" name="phone" required>
+					<label asp-for="FatherName" class="form-label">পিতার নাম:</label>
+					<input asp-for="FatherName" class="form-control">
+					<span asp-validation-for="FatherName" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
-					<label for="email" class="form-label">ই-মেইল:</label>
-					<input type="email" class="form-control" id="email" name="email" required>
+					<label asp-for="Contact" class="form-label">মোবাইল নম্বর:</label>
+					<input asp-for="Contact" class="form-control">
+					<span asp-validation-for="Contact" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label asp-for="Email" class="form-label">ই-মেইল:</label>
+					<input asp-for="Email" class="form-control">
+					<span asp-validation-for="Email" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label">আপনার এলাকা নির্বাচন করুন:</label>
 					<div class="form-check">
-						<input class="form-check-input" type="radio" id="Haragach" name="area" value="Haragach" required>
-						<label class="form-check-label" for="Haragach">হারাগাছ</label>
+						<input class="form-check-input" type="radio" asp-for="Area" value="Haragach">
+						<label class="form-check-label">হারাগাছ</label>
 					</div>
 					<div class="form-check">
-						<input class="form-check-input" type="radio" id="Kaunia" name="area" value="Kaunia">
-						<label class="form-check-label" for="Kaunia">কাউনিয়া</label>
+						<input class="form-check-input" type="radio" asp-for="Area" value="Kaunia">
+						<label class="form-check-label">কাউনিয়া</label>
 					</div>
 					<div class="form-check">
-						<input class="form-check-input" type="radio" id="Pirgacha" name="area" value="Pirgacha">
-						<label class="form-check-label" for="Pirgacha">পীরগাছা</label>
+						<input class="form-check-input" type="radio" asp-for="Area" value="Pirgacha">
+						<label class="form-check-label">পীরগাছা</label>
 					</div>
+					<span asp-validation-for="Area" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
-					<label for="address" class="form-label">ঠিকানা:</label>
-					<input type="text" class="form-control" id="address" name="address" required>
+					<label asp-for="Address" class="form-label">ঠিকানা:</label>
+					<input asp-for="Address" class="form-control">
+					<span asp-validation-for="Address" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
-					<label for="college" class="form-label">শিক্ষা প্রতিষ্ঠানের নাম:</label>
-					<input type="text" class="form-control" id="college" name="college" required>
+					<label asp-for="Institute" class="form-label">শিক্ষা প্রতিষ্ঠানের নাম:</label>
+					<input asp-for="Institute" class="form-control">
 				</div>
 
 				<div class="mb-3">
-					<label for="dob" class="form-label">জন্ম তারিখ:</label>
-					<input type="date" class="form-control" id="dob" name="dob" required>
+					<label asp-for="DoB" class="form-label">জন্ম তারিখ:</label>
+					<input asp-for="DoB" class="form-control">
+					<span asp-validation-for="DoB" class="text-danger"></span>
 				</div>
 
 				<div class="mb-3">
-					<label class="form-label">
-						যে বিষয়ে প্রতিযোগীতা করতে ইচ্ছুক
-					</label>
+					<label class="form-label">যে বিষয়ে প্রতিযোগীতা করতে ইচ্ছুক:</label>
 					<div class="form-check">
-						<input class="form-check-input" type="radio" id="kirat" name="choice" value="kirat" required>
-						<label class="form-check-label" for="kirat">কিরাত</label>
+						<input class="form-check-input" type="radio" asp-for="Choice" value="kirat">
+						<label class="form-check-label">কিরাত</label>
 					</div>
 					<div class="form-check">
-						<input class="form-check-input" type="radio" id="hamdth" name="choice" value="hamdth">
-						<label class="form-check-label" for="hamdth">হামদ-নাত</label>
+						<input class="form-check-input" type="radio" asp-for="Choice" value="hamdth">
+						<label class="form-check-label">হামদ-নাত</label>
 					</div>
 					<div class="form-check">
-						<input class="form-check-input" type="radio" id="islamicGK" name="choice" value="islamicGK">
-						<label class="form-check-label" for="islamicGK">ইসলামিক সাধারণজ্ঞান</label>
+						<input class="form-check-input" type="radio" asp-for="Choice" value="islamicGK">
+						<label class="form-check-label">ইসলামিক সাধারণজ্ঞান</label>
 					</div>
+					<span asp-validation-for="Choice" class="text-black"></span>
 				</div>
 
 				<div class="mb-3">
-					<label for="image" class="form-label">আপনার ছবি আপলোড করুন:</label>
-					<input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+					<label asp-for="Image" class="form-label">আপনার ছবি আপলোড করুন:</label>
+					<input asp-for="Image" class="form-control">
+					<span asp-validation-for="Image" class="text-danger"></span>
 				</div>
 
 				<button type="submit" class="btn btn-primary w-100">Pay with Bkash</button>
@@ -273,3 +329,6 @@
 		</div>
 	</div>
 </section>
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
