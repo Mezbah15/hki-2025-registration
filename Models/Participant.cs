@@ -20,5 +20,7 @@ namespace hki_2025_registration.Models
 
         public string Choice { get; set; } 
         public string Image { get; set; }
+        public string InvoiceNumber { get; set; }
+        public string CreatePaymentResponse { get; set; }
     }
 }

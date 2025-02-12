@@ -16,3 +16,4 @@ appsettings.Local.json
 .vs
 obj
 bin
+/wwwroot/images
