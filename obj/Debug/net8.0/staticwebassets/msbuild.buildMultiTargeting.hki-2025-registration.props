@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\hki-2025-registration.props" />
-</Project>

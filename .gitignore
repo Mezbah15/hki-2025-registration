@@ -13,3 +13,6 @@ secrets.json
 appsettings.Development.json
 appsettings.Local.json
 .env
+.vs
+obj
+bin
