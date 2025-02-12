@@ -1,7 +1,7 @@
 ﻿@using hki_2025_registration.Models.ViewModels
 @model ParticipantViewModel
 @{
-	ViewData["Title"] = "";
+	ViewData["Title"] = "Registration Portal";
 }
 <head>
 </head>
@@ -16,6 +16,7 @@
 		</div>
 	</div>
 </section>
+
 
 <section id="reg-btn" class="container">
 	<div class="row g-3 justify-content-center">
@@ -46,6 +47,7 @@
 
 	</div>
 </section>
+
 
 <section id="gift" class="container py-5">
 	<div class="row g-4">
@@ -91,6 +93,7 @@
 	</div>
 </section>
 
+
 <section id="gold-medal-section" class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-6 col-12">
@@ -112,6 +115,7 @@
 		</div>
 	</div>
 </section>
+
 
 <section id="instruction" class="container">
 	<div class="row">
@@ -180,6 +184,7 @@
 	</div>
 </section>
 
+
 <section id="form">
 	<div class="container form-body">
 		<div class="form-container">
@@ -242,7 +247,7 @@
 
 				<div class="mb-3">
 					<label asp-for="DoB" class="form-label">জন্ম তারিখ:</label>
-					<input asp-for="DoB" class="form-control">
+					<input asp-for="DoB" class="form-control" type="date">
 					<span asp-validation-for="DoB" class="text-danger"></span>
 				</div>
 
@@ -274,6 +279,7 @@
 		</div>
 	</div>
 </section>
+
 
 <section id="contact-us-modile-section" class="container d-block d-md-none">
 	<div class="row">
@@ -329,6 +335,8 @@
 		</div>
 	</div>
 </section>
+
+
 @section Scripts {
 	<partial name="_ValidationScriptsPartial" />
 }

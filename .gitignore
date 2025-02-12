@@ -1,0 +1,15 @@
+.vs/
+
+bin/
+obj/
+out/
+debug/
+logs/
+temp/
+tmp/
+
+# Secrets & Configs
+secrets.json
+appsettings.Development.json
+appsettings.Local.json
+.env

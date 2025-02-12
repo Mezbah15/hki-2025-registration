@@ -20,7 +20,10 @@ namespace hki_2025_registration.Models.ViewModels
         public string Address { get; set; }
 
         public string Institute { get; set; }
-        public DateTime DoB { get; set; } = new DateTime(2009, 1, 1);
+
+        [Required(ErrorMessage = "Date of Birth is Required")]
+        public DateOnly DoB { get; set; } = new DateOnly(2009, 1, 1);
+
         public string Choice { get; set; }
         public IFormFile Image { get; set; }
     }
