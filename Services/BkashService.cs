@@ -21,14 +21,19 @@ namespace hki_2025_registration.Services
 
         public async Task<string> GetTokenAsync()
         {
-            if (_cache.TryGetValue("BkashToken", out string token))
+            if (_cache.TryGetValue("BkashToken", out BkashTokenResponse token))
             {
-                return token;
+                if (DateTime.UtcNow >= DateTime.Parse(token.expires_at))
+                {
+                    token = await RefreshTokenAsync(token.refresh_token);
+                }
+
+                return token.id_token;
             }
 
             var client = new RestClient($"{_settings.BaseUrl}/tokenized/checkout/token/grant/");
             var request = new RestRequest();
-            request.Method = Method.Post;   
+            request.Method = Method.Post;
             request.AddHeader("Content-Type", "application/json");
             request.AddHeader("Accept", "application/json");
             request.AddHeader("username", _settings.Username);
@@ -47,12 +52,53 @@ namespace hki_2025_registration.Services
             if (response.IsSuccessful)
             {
                 var tokenResponse = JsonConvert.DeserializeObject<BkashTokenResponse>(response.Content);
+
+                var cacheEntryOptions = new MemoryCacheEntryOptions()
+                    .SetAbsoluteExpiration(TimeSpan.FromDays(25));
+
+                tokenResponse.expires_at = DateTime.UtcNow.AddSeconds(tokenResponse.expires_in).ToString("o");
+                _cache.Set("BkashToken", tokenResponse, cacheEntryOptions);
+
+                return tokenResponse.id_token;
+            }
+            else
+            {
+                throw new Exception($"Error: {response.StatusCode} - {response.Content}");
+            }
+        }
+
+        private async Task<BkashTokenResponse> RefreshTokenAsync(string refreshToken)
+        {
+            var client = new RestClient($"{_settings.BaseUrl}/tokenized/checkout/token/refresh");
+            var request = new RestRequest();
+            request.Method = Method.Post;
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Accept", "application/json");
+            request.AddHeader("username", _settings.Username);
+            request.AddHeader("password", _settings.Password);
+
+            var requestBody = new
+            {
+                app_key = _settings.AppKey,
+                app_secret = _settings.AppSecret,
+                refresh_token = refreshToken
+            };
+
+            request.AddJsonBody(JsonConvert.SerializeObject(requestBody));
+
+            var response = await client.ExecuteAsync(request);
+
+            if (response.IsSuccessful)
+            {
+                var tokenResponse = JsonConvert.DeserializeObject<BkashTokenResponse>(response.Content);
+
                 var cacheEntryOptions = new MemoryCacheEntryOptions()
                     .SetAbsoluteExpiration(TimeSpan.FromSeconds(tokenResponse.expires_in - 5));
 
-                _cache.Set("BkashToken", tokenResponse.id_token, cacheEntryOptions);
+                tokenResponse.expires_at = DateTime.UtcNow.AddSeconds(tokenResponse.expires_in).ToString("o");
+                _cache.Set("BkashToken", tokenResponse, cacheEntryOptions);
 
-                return tokenResponse.id_token;
+                return tokenResponse;
             }
             else
             {
@@ -87,16 +133,67 @@ namespace hki_2025_registration.Services
 
             var response = await client.ExecuteAsync(request);
 
-            if (response.IsSuccessful)
+            if (response.IsSuccessful && response.Content != null)
             {
-                return JsonConvert.DeserializeObject<BkashCreatePaymentResponse>(response.Content);
+                var result = JsonConvert.DeserializeObject<BkashCreatePaymentResponse>(response.Content);
+                if (result != null)
+                {
+                    return result;
+                }
             }
-            else
+
+            throw new Exception($"Error: {response.StatusCode} - {response.Content}");
+        }
+
+        public async Task<BkashExecutePaymentResponse> ExecutePaymentAsync(string paymentID)
+        {
+            var token = await GetTokenAsync();
+
+            var client = new RestClient($"{_settings.BaseUrl}/tokenized/checkout/execute");
+            var request = new RestRequest();
+            request.Method = Method.Post;
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Accept", "application/json");
+            request.AddHeader("authorization", token);
+            request.AddHeader("x-app-key", _settings.AppKey);
+
+            var requestBody = new
             {
-                throw new Exception($"Error: {response.StatusCode} - {response.Content}");
+                paymentID = paymentID
+            };
+
+            request.AddJsonBody(JsonConvert.SerializeObject(requestBody));
+
+            var response = await client.ExecuteAsync(request);
+
+            if (response.IsSuccessful && response.Content != null)
+            {
+                var result = JsonConvert.DeserializeObject<BkashExecutePaymentResponse>(response.Content);
+                if (result != null)
+                {
+                    return result;
+                }
             }
+
+            throw new Exception($"Error: {response.StatusCode} - {response.Content}");
         }
     }
+}
+
+public class BkashExecutePaymentResponse
+{
+    public string statusCode { get; set; }
+    public string statusMessage { get; set; }
+    public string paymentID { get; set; }
+    public string payerReference { get; set; }
+    public string customerMsisdn { get; set; }
+    public string trxID { get; set; }
+    public string amount { get; set; }
+    public string transactionStatus { get; set; }
+    public string paymentExecuteTime { get; set; }
+    public string currency { get; set; }
+    public string intent { get; set; }
+    public string merchantInvoiceNumber { get; set; }
 }
 
 public class BkashTokenResponse
@@ -105,6 +202,7 @@ public class BkashTokenResponse
     public string id_token { get; set; }
     public int expires_in { get; set; }
     public string refresh_token { get; set; }
+    public string expires_at { get; set; }
 }
 
 public class BkashCreatePaymentResponse

@@ -24,5 +24,6 @@ namespace hki_2025_registration.Models
         public string PaymentId { get; set; }
         public string CreatePaymentResponse { get; set; }
         public string PaymentStatus { get; internal set; }
+        public string ExecutePaymentResponse { get; internal set; }
     }
 }

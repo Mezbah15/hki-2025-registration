@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using hki_2025_registration.Models;
 using hki_2025_registration.Models.ViewModels;
@@ -43,10 +44,11 @@ namespace hki_2025_registration.Controllers
                 }
 
                 var participant = await model.ToDomainAsync();
-                var paymentResponse = await _bkashService.CreatePaymentAsync(participant.InvoiceNumber, 500, participant.Contact);
+                var paymentResponse = await _bkashService.CreatePaymentAsync(participant.InvoiceNumber, 1, participant.Contact);
                 participant.CreatePaymentResponse = JsonConvert.SerializeObject(paymentResponse);
                 participant.PaymentId = paymentResponse.paymentID;
                 participant.PaymentStatus = paymentResponse.transactionStatus;
+                participant.ExecutePaymentResponse = "NotExecuted";
 
                 _context.Participants.Add(participant);
                 await _context.SaveChangesAsync();
@@ -69,20 +71,30 @@ namespace hki_2025_registration.Controllers
             try
             {
                 var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
-                _logger.LogInformation("Callback received from IP: {IpAddress}", ipAddress);
+                _logger.LogInformation("Callback received from IP: {IpAddress}, apiVersion: {ApiVersion}, product: {Product}, paymentID: {PaymentID}, status: {Status}, signature: {Signature}", ipAddress, apiVersion, product, paymentID, status, signature);
 
                 var participant = await _context.Participants.FirstOrDefaultAsync(p => p.PaymentId == paymentID);
                 if (participant == null)
                 {
                     _logger.LogError("Participant not found for payment ID {PaymentId}", paymentID);
-                    //return NotFound();
+                    throw new Exception("Participant not found. Might be Malicious callback.");
                 }
                 else
                 {
                     if (status == "success")
                     {
-                        participant.PaymentStatus = "Success";
-                        _logger.LogInformation("Payment successful for participant {ParticipantId} with payment ID {PaymentId}", participant.Id, paymentID);
+                        var response = await _bkashService.ExecutePaymentAsync(paymentID);
+                        if (response.statusMessage == "Successful" && response.paymentID == participant.PaymentId)
+                        {
+                            participant.PaymentStatus = "Success";
+                            participant.ExecutePaymentResponse = JsonConvert.SerializeObject(response);
+                            _logger.LogInformation("Payment successful for participant {ParticipantId} with payment ID {PaymentId}", participant.Id, paymentID);
+                        }
+                        else
+                        {
+                            participant.PaymentStatus = $"Failure while execute {JsonConvert.SerializeObject(response)}";
+                            _logger.LogInformation("Failure while execute for participant {ParticipantId} with payment ID {PaymentId}. {Response}", participant.Id, paymentID, JsonConvert.SerializeObject(response));
+                        }
                     }
                     else if (status == "failure")
                     {
