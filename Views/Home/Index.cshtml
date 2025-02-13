@@ -186,95 +186,115 @@
 
 <section id="form">
 	<div class="container form-body">
-		<div class="form-container">
-			<h2 class="text-center mb-4">
-				রেজিস্ট্রেশন ফরম
-			</h2>
-			<form asp-action="Index" asp-controller="Home" method="POST" enctype="multipart/form-data">
-				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-				<div class="mb-3">
-					<label asp-for="Name" class="form-label">নাম:</label>
-					<input asp-for="Name" class="form-control">
-					<span asp-validation-for="Name" class="text-danger"></span>
+		<div class="row">
+			<!-- Left Side Instructions -->
+			<div class="col-md-4" style="margin-top:50px">
+				<div class="p-3 bg-light border rounded">
+					<h5 class="text-center">নির্দেশাবলী</h5>
+					<ul class="list-unstyled">
+						<li>✅ <b>ছবির আকার</b>: ৩০০ কেবির কম হতে হবে।</li>
+						<li>✅ <b>সক্রিয় মোবাইল নম্বর</b> প্রদান করুন।</li>
+						<li>✅ <b>সঠিক ই-মেইল</b> প্রদান করুন।</li>
+						<li>✅ <b>আপনার বিকাশে কমপক্ষে ২০০ টাকা </b> থাকতে হবে।</li>
+					</ul>
+					<br />
+					<p>যেকোনো সমস্যায় কল করুন 01750-833999</p>
 				</div>
+			</div>
 
-				<div class="mb-3">
-					<label asp-for="FatherName" class="form-label">পিতার নাম:</label>
-					<input asp-for="FatherName" class="form-control">
-					<span asp-validation-for="FatherName" class="text-danger"></span>
+			<!-- Form Section -->
+			<div class="col-md-7">
+				<div class="form-container">
+					<h2 class="text-center mb-4">রেজিস্ট্রেশন ফরম</h2>
+					<form asp-action="Index" asp-controller="Home" method="POST" enctype="multipart/form-data">
+						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+						<div class="mb-3">
+							<label asp-for="Name" class="form-label">নাম:</label>
+							<input asp-for="Name" class="form-control">
+							<span asp-validation-for="Name" class="text-danger"></span>
+						</div>
+
+						<div class="mb-3">
+							<label asp-for="FatherName" class="form-label">পিতার নাম:</label>
+							<input asp-for="FatherName" class="form-control">
+							<span asp-validation-for="FatherName" class="text-danger"></span>
+						</div>
+
+						<div class="mb-3">
+							<label asp-for="Contact" class="form-label">মোবাইল নম্বর:</label>
+							<input asp-for="Contact" class="form-control">
+							<span asp-validation-for="Contact" class="text-danger"></span>
+						</div>
+
+						<div class="mb-3">
+							<label asp-for="Email" class="form-label">ই-মেইল:</label>
+							<input asp-for="Email" class="form-control">
+							<span asp-validation-for="Email" class="text-danger"></span>
+						</div>
+
+						<div class="mb-3">
+							<label class="form-label">আপনার এলাকা নির্বাচন করুন:</label>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" asp-for="Area" value="Haragach">
+								<label class="form-check-label">হারাগাছ</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" asp-for="Area" value="Kaunia">
+								<label class="form-check-label">কাউনিয়া</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" asp-for="Area" value="Pirgacha">
+								<label class="form-check-label">পীরগাছা</label>
+							</div>
+							<span asp-validation-for="Area" class="text-danger"></span>
+						</div>
+
+						<div class="mb-3">
+							<label asp-for="Address" class="form-label">ঠিকানা:</label>
+							<input asp-for="Address" class="form-control">
+							<span asp-validation-for="Address" class="text-danger"></span>
+						</div>
+
+						<div class="mb-3">
+							<label asp-for="Institute" class="form-label">শিক্ষা প্রতিষ্ঠানের নাম:</label>
+							<input asp-for="Institute" class="form-control">
+						</div>
+
+						<div class="mb-3">
+							<label asp-for="DoB" class="form-label">জন্ম তারিখ:</label>
+							<input asp-for="DoB" class="form-control" type="date">
+							<span asp-validation-for="DoB" class="text-danger"></span>
+						</div>
+
+						<div class="mb-3">
+							<label class="form-label">যে বিষয়ে প্রতিযোগীতা করতে ইচ্ছুক:</label>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" asp-for="Choice" value="kirat">
+								<label class="form-check-label">কিরাত</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" asp-for="Choice" value="hamdth">
+								<label class="form-check-label">হামদ-নাত</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" asp-for="Choice" value="islamicGK">
+								<label class="form-check-label">ইসলামিক সাধারণজ্ঞান</label>
+							</div>
+							<span asp-validation-for="Choice" class="text-danger"></span>
+						</div>
+
+						<div class="mb-3">
+							<label asp-for="Image" class="form-label">আপনার ছবি আপলোড করুন:</label>
+							<input asp-for="Image" class="form-control" type="file">
+							<span asp-validation-for="Image" class="text-danger"></span>
+						</div>
+
+						<button type="submit" class="btn btn-primary w-100">Pay with Bkash</button>
+					</form>
 				</div>
+			</div>
+			<div class="col-md-1"></div>
 
-				<div class="mb-3">
-					<label asp-for="Contact" class="form-label">মোবাইল নম্বর:</label>
-					<input asp-for="Contact" class="form-control">
-					<span asp-validation-for="Contact" class="text-danger"></span>
-				</div>
-
-				<div class="mb-3">
-					<label asp-for="Email" class="form-label">ই-মেইল:</label>
-					<input asp-for="Email" class="form-control">
-					<span asp-validation-for="Email" class="text-danger"></span>
-				</div>
-
-				<div class="mb-3">
-					<label class="form-label">আপনার এলাকা নির্বাচন করুন:</label>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" asp-for="Area" value="Haragach">
-						<label class="form-check-label">হারাগাছ</label>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" asp-for="Area" value="Kaunia">
-						<label class="form-check-label">কাউনিয়া</label>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" asp-for="Area" value="Pirgacha">
-						<label class="form-check-label">পীরগাছা</label>
-					</div>
-					<span asp-validation-for="Area" class="text-danger"></span>
-				</div>
-
-				<div class="mb-3">
-					<label asp-for="Address" class="form-label">ঠিকানা:</label>
-					<input asp-for="Address" class="form-control">
-					<span asp-validation-for="Address" class="text-danger"></span>
-				</div>
-
-				<div class="mb-3">
-					<label asp-for="Institute" class="form-label">শিক্ষা প্রতিষ্ঠানের নাম:</label>
-					<input asp-for="Institute" class="form-control">
-				</div>
-
-				<div class="mb-3">
-					<label asp-for="DoB" class="form-label">জন্ম তারিখ:</label>
-					<input asp-for="DoB" class="form-control" type="date">
-					<span asp-validation-for="DoB" class="text-danger"></span>
-				</div>
-
-				<div class="mb-3">
-					<label class="form-label">যে বিষয়ে প্রতিযোগীতা করতে ইচ্ছুক:</label>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" asp-for="Choice" value="kirat">
-						<label class="form-check-label">কিরাত</label>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" asp-for="Choice" value="hamdth">
-						<label class="form-check-label">হামদ-নাত</label>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" asp-for="Choice" value="islamicGK">
-						<label class="form-check-label">ইসলামিক সাধারণজ্ঞান</label>
-					</div>
-					<span asp-validation-for="Choice" class="text-black"></span>
-				</div>
-
-				<div class="mb-3">
-					<label asp-for="Image" class="form-label">আপনার ছবি আপলোড করুন:</label>
-					<input asp-for="Image" class="form-control">
-					<span asp-validation-for="Image" class="text-danger"></span>
-				</div>
-
-				<button type="submit" class="btn btn-primary w-100">Pay with Bkash</button>
-			</form>
 		</div>
 	</div>
 </section>
