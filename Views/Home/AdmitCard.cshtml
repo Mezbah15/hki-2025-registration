@@ -1,0 +1,127 @@
+﻿@model hki_2025_registration.Models.PaymentResultViewModel
+
+@{
+    ViewData["Title"] = "প্রবেশপত্র - ২০২৫";
+}
+
+<style>
+    .text-center {
+        text-align: center;
+    }
+
+    .admission-form {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 20px 0;
+        background-color: #f9f9f9;
+    }
+
+        .admission-form h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .admission-form p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+    .footer {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #555;
+    }
+
+        .footer p {
+            margin: 5px 0;
+        }
+</style>
+
+@if(Model.Participant == null){
+    <div class="content container my-5 p-5 border col-md-8">
+        <h2 class="text-center">Enter Mobile Number</h2>
+        <form asp-action="AdmitCard" method="get">
+            <div class="form-group">
+                <label for="MobileNumber">Mobile Number</label>
+                <input type="text" class="form-control" id="MobileNumber" name="MobileNumber" required pattern="^01[3-9]\d{8}$" placeholder="01712345678">
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+    </div>
+}
+else{
+    <div class="content container my-5 p-5 border">
+        <br />
+        <br />
+        <h2 class="text-center display-7 fw-bold">হামদ্-নাত, কিরাত ও ইসলামিক সাধারণ জ্ঞান প্রতিযোগীতা - ২০২৫</h2>
+        <p class="text-center fs-4">স্থান: হারাগাছ বহুমুখী উচ্চ বিদ্যালয়। হারাগাছ পৌরসভা, কাউনিয়া, রংপুর।</p>
+        <br />
+        <div class="admission-form border p-4">
+            <h3 class="fw-bold">প্রবেশপত্র</h3>
+            <div class="d-flex justify-content-between align-items-start">
+                <div class="form-details">
+                    <p class="fs-5"><strong>ট্রাকিং নম্বর:</strong> @Model.Participant.InvoiceNumber</p>
+                    <p class="fs-5"><strong>প্রতিযোগীতার বিষয়:</strong> @Model.Participant.Choice</p>
+                    <p class="fs-5"><strong>নাম:</strong> @Model.Participant.Name</p>
+                    <p class="fs-5"><strong>পিতার নাম:</strong> @Model.Participant.FatherName</p>
+                    <p class="fs-5"><strong>জন্মতারিখ:</strong> @Model.Participant.DoB.ToString("dd-MM-yyyy")</p>
+                    <p class="fs-5"><strong>মোবাইল নম্বর:</strong> @Model.Participant.Contact</p>
+                    <p class="fs-5"><strong>ই-মেইল:</strong> @Model.Participant.Email</p>
+                    <p class="fs-5"><strong>এলাকা:</strong> @Model.Participant.Area</p>
+                    <p class="fs-5"><strong>ঠিকানা:</strong> @Model.Participant.Address</p>
+                </div>
+                <div class="participant-image ms-4">
+                    <img src="/images/@Model.Participant.Image" alt="Participant Image" class="rounded border" style="width: 150px; height: 150px; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="footer">
+            <p class="fs-6">১. সকল প্রতিযোগীতা হারাগাছ হাই স্কুলে (হারাগাছ পৌরসভা, কাউনিয়া, রংপুর) অনুষ্ঠিত হবে ইনশাআল্লাহ।</p>
+            <p class="fs-6">২. আপনার প্রতিযোগীতার তারিখ ও সময় মোবাইল নাম্বারে এস এম এস-এর মাধ্যমে জানানো হবে ইনশাআল্লাহ।</p>
+            <p class="fs-6">৩. প্রতিযোগীকে অবশ্যই এডমিটের প্রিন্ট সাথে নিয়ে আসতে হবে।</p>
+        </div>
+    </div>
+    <button class="btn btn-success" id="cmd" style="display: block; margin: 0 auto;">Download PDF</button>
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#cmd').click(function () {
+            CreatePDFfromHTML();
+        });
+
+        function CreatePDFfromHTML() {
+            // var HTML_Width = 595.28;
+            // var HTML_Height = $(".content").height();
+
+            var HTML_Width = 595.28;
+            var originalWidth = $(".content").width();
+            var originalHeight = $(".content").height();
+            var HTML_Height = (originalHeight / originalWidth) * HTML_Width;
+
+            var top_left_margin = 15;
+            var PDF_Width = HTML_Width + (top_left_margin * 2);
+            var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+            var canvas_image_width = HTML_Width;
+            var canvas_image_height = HTML_Height;
+
+            var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+            html2canvas($(".content")[0]).then(function (canvas) {
+                var imgData = canvas.toDataURL("image/jpeg", 1.0);
+                var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+                pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+                for (var i = 1; i <= totalPDFPages; i++) {
+                    pdf.addPage(PDF_Width, PDF_Height);
+                    pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+                }
+                pdf.save("Admit_Card"+ ".pdf");
+                $(".html-content").hide();
+            });
+        }
+    });
+</script>

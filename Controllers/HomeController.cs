@@ -1,6 +1,8 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using Aspose.Pdf;
+using Aspose.Pdf.Text;
 using hki_2025_registration.Models;
 using hki_2025_registration.Models.ViewModels;
 using hki_2025_registration.Services;
@@ -15,12 +17,18 @@ namespace hki_2025_registration.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
         private readonly BkashService _bkashService;
+        private readonly EmailService _emailService;
+        private readonly PdfService _pdfService;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, BkashService bkashService)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, 
+            BkashService bkashService, EmailService emailService,
+            PdfService pdfService)
         {
             _logger = logger;
             _context = context;
             _bkashService = bkashService;
+            _emailService = emailService;
+            this._pdfService = pdfService;
         }
 
         public IActionResult Index()
@@ -56,9 +64,16 @@ namespace hki_2025_registration.Controllers
 
             try
             {
-                if (!Regex.IsMatch(model.Contact, @"^(?:\+88|88)?(01[3-9]\d{8})$"))
+                if (!Regex.IsMatch(model.Contact, @"^01[3-9]\d{8}$"))
                 {
                     ModelState.AddModelError("Contact", "Invalid contact number format.");
+                    return View(model);
+                }
+
+                var existingParticipant = await _context.Participants.FirstOrDefaultAsync(p => p.Contact == model.Contact && p.PaymentStatus == "Success");
+                if (existingParticipant != null)
+                {
+                    ModelState.AddModelError("Contact", "এই নাম্বার দিয়ে পূর্বে আবেদন করা হয়েছে, অনুগ্রহপূর্বক অন্য নাম্বার ব্যবহার করুন।");
                     return View(model);
                 }
 
@@ -93,6 +108,7 @@ namespace hki_2025_registration.Controllers
                 _logger.LogInformation("Callback received from IP: {IpAddress}, apiVersion: {ApiVersion}, product: {Product}, paymentID: {PaymentID}, status: {Status}, signature: {Signature}", ipAddress, apiVersion, product, paymentID, status, signature);
 
                 var participant = await _context.Participants.FirstOrDefaultAsync(p => p.PaymentId == paymentID);
+                var data = JsonConvert.SerializeObject(participant);
                 if (participant == null)
                 {
                     _logger.LogError("Participant not found for payment ID {PaymentId}", paymentID);
@@ -108,6 +124,10 @@ namespace hki_2025_registration.Controllers
                             participant.PaymentStatus = "Success";
                             participant.ExecutePaymentResponse = JsonConvert.SerializeObject(response);
                             _logger.LogInformation("Payment successful for participant {ParticipantId} with payment ID {PaymentId}", participant.Id, paymentID);
+                            await _context.SaveChangesAsync();
+
+                            // Return success view with invoice
+                            return RedirectToAction("AdmitCard", new { MobileNumber = participant.Contact });
                         }
                         else
                         {
@@ -134,7 +154,32 @@ namespace hki_2025_registration.Controllers
                 _logger.LogError(ex, "Error occurred while processing callback for payment ID {PaymentId}", paymentID);
             }
 
-            return RedirectToAction("Index");
+            // Return failure view
+            return View("PaymentFailure");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AdmitCard(string MobileNumber)
+        {
+            if (string.IsNullOrEmpty(MobileNumber))
+            {
+                return View(new PaymentResultViewModel());
+            }
+
+            var participant = await _context.Participants
+                .FirstOrDefaultAsync(p => p.Contact == MobileNumber && p.PaymentStatus == "Success");
+
+            if (participant == null)
+            {
+                return NotFound("আবেদনকারী পাওয়া যায়নি বা পেমেন্ট সফল হয়নি।");
+            }
+
+            var model = new PaymentResultViewModel
+            {
+                Participant = participant
+            };
+
+            return View(model);
         }
 
         public IActionResult Contact()
