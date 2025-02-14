@@ -74,7 +74,7 @@ namespace hki_2025_registration.Controllers
                 }
 
                 var participant = await model.ToDomainAsync();
-                var paymentResponse = await _bkashService.CreatePaymentAsync(participant.InvoiceNumber, 1, participant.Contact);
+                var paymentResponse = await _bkashService.CreatePaymentAsync(participant.InvoiceNumber, 200, participant.Contact);
                 participant.CreatePaymentResponse = JsonConvert.SerializeObject(paymentResponse);
                 participant.PaymentId = paymentResponse.paymentID;
                 participant.PaymentStatus = paymentResponse.transactionStatus;

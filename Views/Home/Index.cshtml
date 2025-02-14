@@ -366,13 +366,13 @@
 				const fileType = file.type;
 				const fileSize = file.size / 1024; // size in KB
 				const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
-				const maxSize = 5000; // 300 KB
+				const maxSize = 10000; 
 
 				if (!allowedTypes.includes(fileType)) {
 					alert('Only JPEG, PNG, and WEBP files are allowed.');
 					e.target.value = ''; // Clear the input
 				} else if (fileSize > maxSize) {
-					alert('File size must be less than 300 KB.');
+					alert('File size must be less than 10Mb.');
 					e.target.value = ''; // Clear the input
 				}
 			}
