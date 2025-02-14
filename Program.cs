@@ -21,8 +21,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("MySQLConnection"), serverVersion));
 
 builder.Services.Configure<BkashSettings>(builder.Configuration.GetSection("BkashSettings"));
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<BkashService>();
+builder.Services.AddScoped<EmailService>();
+builder.Services.AddScoped<PdfService>();
 
 var app = builder.Build();
 
