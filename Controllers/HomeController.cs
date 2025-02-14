@@ -7,7 +7,6 @@ using hki_2025_registration.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using Rotativa.AspNetCore;
 
 namespace hki_2025_registration.Controllers
 {

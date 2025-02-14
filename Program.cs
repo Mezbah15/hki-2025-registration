@@ -2,7 +2,6 @@ using System.Net;
 using hki_2025_registration.Models;
 using hki_2025_registration.Services;
 using Microsoft.EntityFrameworkCore;
-using Rotativa.AspNetCore;
 using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 
