@@ -35,6 +35,25 @@ namespace hki_2025_registration.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
+            //Image Validation
+            var extension = Path.GetExtension(model.Image.FileName);
+            var size = model.Image.Length;
+            if (extension == ".png" || extension == ".jpg" || extension == ".jpeg")
+            {
+                if (size > 1048576)
+                {
+                    TempData["SizeError"] = "Size must be less than 1 MB";
+
+                    return View(model);
+                }
+            }
+            else
+            {
+                TempData["ExtensionError"] = "Must be a png, jpg or jpeg";
+
+                return View(model);
+            }
+
             try
             {
                 if (!Regex.IsMatch(model.Contact, @"^(?:\+88|88)?(01[3-9]\d{8})$"))

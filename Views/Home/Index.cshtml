@@ -183,7 +183,7 @@
 	</div>
 </section>
 
-
+@* Bkash API Payment Form *@
 <section id="form">
 	<div class="container form-body">
 		<div class="row">
@@ -197,8 +197,9 @@
 						<li>✅ <b>সঠিক ই-মেইল</b> প্রদান করুন।</li>
 						<li>✅ <b>আপনার বিকাশে কমপক্ষে ২০০ টাকা </b> থাকতে হবে।</li>
 					</ul>
+					<p style="text-align:center">সফলভাবে পেমেন্ট করার পর এডমিট ডাউনলোড করে নিন।</p>
 					<br />
-					<p>যেকোনো সমস্যায় কল করুন 01750-833999</p>
+					<p style="color:darkred">যেকোনো সমস্যায় কল করুন 01750-833999</p>
 				</div>
 			</div>
 
@@ -288,6 +289,8 @@
 							<input asp-for="Image" class="form-control" type="file">
 							<span asp-validation-for="Image" class="text-danger"></span>
 						</div>
+						<p style="color:red">@TempData["ExtensionError"] </p>
+						<p style="color:red">@TempData["SizeError"] </p>
 
 						<button type="submit" class="btn btn-primary w-100">Pay with Bkash</button>
 					</form>
@@ -298,7 +301,6 @@
 		</div>
 	</div>
 </section>
-
 
 <section id="contact-us-modile-section" class="container d-block d-md-none">
 	<div class="row">

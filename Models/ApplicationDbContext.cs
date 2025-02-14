@@ -9,6 +9,6 @@ namespace hki_2025_registration.Models
         {
         }
         public DbSet<Participant> Participants { get; set; }
-        public DbSet<ShopKeeper> ShopKeeper { get; set; } = default!;
+        public DbSet<ShopKeeper> ShopKeepers { get; set; } = default!;
     }
 }
