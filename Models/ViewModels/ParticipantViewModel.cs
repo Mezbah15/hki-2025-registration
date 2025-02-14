@@ -27,7 +27,6 @@ namespace hki_2025_registration.Models.ViewModels
         public string Choice { get; set; }
         public IFormFile Image { get; set; }
 
-
         internal async Task<Participant> ToDomainAsync()
         {
             var participant = new Participant

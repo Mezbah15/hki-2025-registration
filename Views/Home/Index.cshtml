@@ -222,7 +222,7 @@
 
 						<div class="mb-3">
 							<label asp-for="Contact" class="form-label">মোবাইল নম্বর:</label>
-							<input asp-for="Contact" class="form-control">
+							<input asp-for="Contact" required pattern="^01[3-9]\d{8}$" class="form-control">
 							<span asp-validation-for="Contact" class="text-danger"></span>
 						</div>
 
