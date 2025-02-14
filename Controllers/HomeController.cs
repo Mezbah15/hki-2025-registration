@@ -151,7 +151,12 @@ namespace hki_2025_registration.Controllers
             }
 
             // Return failure view
-            return View("PaymentFailure");
+            return RedirectToAction("PaymentFailure");
+        }
+
+        public IActionResult PaymentFailure()
+        {
+            return View();
         }
 
         [HttpGet]
