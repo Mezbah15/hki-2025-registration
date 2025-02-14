@@ -221,29 +221,29 @@
 						</div>
 
 						<div class="mb-3">
-							<label asp-for="Contact" class="form-label">মোবাইল নম্বর:</label>
-							<input asp-for="Contact" required pattern="^01[3-9]\d{8}$" class="form-control">
-							<span asp-validation-for="Contact" class="text-danger"></span>
+                            <label asp-for="Contact" class="form-label">মোবাইল নম্বর:</label>
+                            <input asp-for="Contact" required pattern="^01[3-9]\d{8}$" class="form-control" placeholder="01712345678">
+                            <span asp-validation-for="Contact" class="text-danger"></span>
 						</div>
 
 						<div class="mb-3">
 							<label asp-for="Email" class="form-label">ই-মেইল:</label>
-							<input asp-for="Email" class="form-control">
+							<input asp-for="Email" class="form-control" placeholder="optional">
 							<span asp-validation-for="Email" class="text-danger"></span>
 						</div>
 
 						<div class="mb-3">
 							<label class="form-label">আপনার এলাকা নির্বাচন করুন:</label>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" asp-for="Area" value="Haragach">
+								<input class="form-check-input" type="radio" asp-for="Area" value="হারাগাছ">
 								<label class="form-check-label">হারাগাছ</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" asp-for="Area" value="Kaunia">
+								<input class="form-check-input" type="radio" asp-for="Area" value="কাউনিয়া">
 								<label class="form-check-label">কাউনিয়া</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" asp-for="Area" value="Pirgacha">
+								<input class="form-check-input" type="radio" asp-for="Area" value="পীরগাছা">
 								<label class="form-check-label">পীরগাছা</label>
 							</div>
 							<span asp-validation-for="Area" class="text-danger"></span>
@@ -269,16 +269,16 @@
 						<div class="mb-3">
 							<label class="form-label">যে বিষয়ে প্রতিযোগীতা করতে ইচ্ছুক:</label>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" asp-for="Choice" value="kirat">
+								<input class="form-check-input" type="radio" asp-for="Choice" value="কিরাত">
 								<label class="form-check-label">কিরাত</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" asp-for="Choice" value="hamdth">
+								<input class="form-check-input" type="radio" asp-for="Choice" value="হামদ-নাত">
 								<label class="form-check-label">হামদ-নাত</label>
 							</div>
 							<div class="form-check">
-								<input class="form-check-input" type="radio" asp-for="Choice" value="islamicGK">
-								<label class="form-check-label">ইসলামিক সাধারণজ্ঞান</label>
+								<input class="form-check-input" type="radio" asp-for="Choice" value="ইসলামিক সাধারণ জ্ঞান">
+								<label class="form-check-label">ইসলামিক সাধারণ জ্ঞান</label>
 							</div>
 							<span asp-validation-for="Choice" class="text-danger"></span>
 						</div>

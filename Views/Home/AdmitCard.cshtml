@@ -38,12 +38,12 @@
 </style>
 
 @if(Model.Participant == null){
-    <div class="content container my-5 p-5 border">
+    <div class="content container my-5 p-5 border col-md-8">
         <h2 class="text-center">Enter Mobile Number</h2>
         <form asp-action="AdmitCard" method="get">
             <div class="form-group">
                 <label for="MobileNumber">Mobile Number</label>
-                <input type="text" class="form-control" id="MobileNumber" name="MobileNumber" required pattern="^01[3-9]\d{8}$" title="Enter a valid mobile number">
+                <input type="text" class="form-control" id="MobileNumber" name="MobileNumber" required pattern="^01[3-9]\d{8}$" placeholder="01712345678">
             </div>
             <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
@@ -67,6 +67,7 @@ else{
                     <p class="fs-5"><strong>জন্মতারিখ:</strong> @Model.Participant.DoB.ToString("dd-MM-yyyy")</p>
                     <p class="fs-5"><strong>মোবাইল নম্বর:</strong> @Model.Participant.Contact</p>
                     <p class="fs-5"><strong>ই-মেইল:</strong> @Model.Participant.Email</p>
+                    <p class="fs-5"><strong>এলাকা:</strong> @Model.Participant.Area</p>
                     <p class="fs-5"><strong>ঠিকানা:</strong> @Model.Participant.Address</p>
                 </div>
                 <div class="participant-image ms-4">
@@ -120,7 +121,7 @@ else{
                 }
                 pdf.save("Admit_Card"+ ".pdf");
                 $(".html-content").hide();
-        });
-    }
+            });
+        }
     });
 </script>

@@ -99,14 +99,13 @@ namespace hki_2025_registration.Controllers
                 {
                     if (status == "success")
                     {
-                        var response = new BkashExecutePaymentResponse(); //await _bkashService.ExecutePaymentAsync(paymentID);
-                        response.statusMessage = "Successful";
-                        response.paymentID = participant.PaymentId;
+                        var response = await _bkashService.ExecutePaymentAsync(paymentID);
                         if (response.statusMessage == "Successful" && response.paymentID == participant.PaymentId)
                         {
                             participant.PaymentStatus = "Success";
                             participant.ExecutePaymentResponse = JsonConvert.SerializeObject(response);
                             _logger.LogInformation("Payment successful for participant {ParticipantId} with payment ID {PaymentId}", participant.Id, paymentID);
+                            await _context.SaveChangesAsync();
 
                             // Return success view with invoice
                             return RedirectToAction("AdmitCard", new { MobileNumber = participant.Contact });
@@ -162,13 +161,6 @@ namespace hki_2025_registration.Controllers
             };
 
             return View(model);
-        }
-        
-        private void AddTableRow(Table table, string fieldName, string fieldValue)
-        {
-            var row = table.Rows.Add();
-            row.Cells.Add(fieldName);
-            row.Cells.Add(fieldValue);
         }
 
         public IActionResult Contact()
