@@ -1,0 +1,90 @@
+﻿@model hki_2025_registration.Models.PaymentResultViewModel
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .text-center {
+            text-align: center;
+        }
+
+        .content {
+            width: 210mm;
+            padding: 10mm;
+            border: 1px solid #ddd;
+        }
+        .admission-form {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        .admission-form h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .admission-form p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .content {
+            font-family: 'Roboto', sans-serif;
+        }
+        .d-flex {
+            display: flex;
+        }
+        .justify-content-between {
+            justify-content: space-between;
+        }
+        .align-items-start {
+            align-items: flex-start;
+        }
+        .ms-4 {
+            margin-left: 1.5rem;
+        }
+        .rounded {
+            border-radius: 0.25rem;
+        }
+        .border {
+            border: 1px solid #ddd;
+        }
+    </style>
+    <div class="content">
+        <br />
+        <br />
+        <h2 class="text-center">হামদ্-নাত, কিরাত ও ইসলামিক সাধারণ জ্ঞান প্রতিযোগীতা - ২০২৫</h2>
+        <p class="text-center">স্থান: হারাগাছ বহুমুখী উচ্চ বিদ্যালয়। হারাগাছ পৌরসভা, কাউনিয়া, রংপুর।</p>
+        <br />
+        <div class="admission-form">
+            <h3>প্রবেশপত্র</h3>
+            <div class="d-flex justify-content-between align-items-start">
+                <div class="form-details">
+                    <p><strong>ট্রাকিং নম্বর:</strong> @Model.Participant.InvoiceNumber</p>
+                    <p><strong>প্রতিযোগীতার বিষয়:</strong> @Model.Participant.Choice</p>
+                    <p><strong>নাম:</strong> @Model.Participant.Name</p>
+                    <p><strong>পিতার নাম:</strong> @Model.Participant.FatherName</p>
+                    <p><strong>জন্মতারিখ:</strong> @Model.Participant.DoB.ToString("dd-MM-yyyy")</p>
+                    <p><strong>মোবাইল নম্বর:</strong> @Model.Participant.Contact</p>
+                    <p><strong>ই-মেইল:</strong> @Model.Participant.Email</p>
+                    <p><strong>এলাকা:</strong> @Model.Participant.Area</p>
+                    <p><strong>ঠিকানা:</strong> @Model.Participant.Address</p>
+                </div>
+                <div class="participant-image ms-4">
+                    <img src="/images/@Model.Participant.Image" alt="Participant Image" class="rounded border" style="width: 150px; height: 150px; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="footer">
+            <p>১. সকল প্রতিযোগীতা হারাগাছ হাই স্কুলে (হারাগাছ পৌরসভা, কাউনিয়া, রংপুর) অনুষ্ঠিত হবে ইনশাআল্লাহ।</p>
+            <p>২. আপনার প্রতিযোগীতার তারিখ ও সময় মোবাইল নাম্বারে এস এম এস-এর মাধ্যমে জানানো হবে ইনশাআল্লাহ।</p>
+            <p>৩. প্রতিযোগীকে অবশ্যই এডমিটের প্রিন্ট সাথে নিয়ে আসতে হবে।</p>
+        </div>
+    </div>
