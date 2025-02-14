@@ -6,6 +6,7 @@ using hki_2025_registration.Models.ViewModels;
 using hki_2025_registration.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
 namespace hki_2025_registration.Controllers
@@ -15,13 +16,15 @@ namespace hki_2025_registration.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
         private readonly BkashService _bkashService;
+        private readonly BkashSettings _bkashSettings;
 
         public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, 
-            BkashService bkashService)
+            BkashService bkashService, IOptions<BkashSettings> bkashSettings)
         {
             _logger = logger;
             _context = context;
             _bkashService = bkashService;
+            _bkashSettings = bkashSettings.Value;
         }
 
         public IActionResult Index()
@@ -71,7 +74,7 @@ namespace hki_2025_registration.Controllers
                 }
 
                 var participant = await model.ToDomainAsync();
-                var paymentResponse = await _bkashService.CreatePaymentAsync(participant.InvoiceNumber, 1, participant.Contact);
+                var paymentResponse = await _bkashService.CreatePaymentAsync(participant.InvoiceNumber, _bkashSettings.Amount, participant.Contact);
                 participant.CreatePaymentResponse = JsonConvert.SerializeObject(paymentResponse);
                 participant.PaymentId = paymentResponse.paymentID;
                 participant.PaymentStatus = paymentResponse.transactionStatus;
