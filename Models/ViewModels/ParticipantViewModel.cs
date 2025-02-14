@@ -13,7 +13,7 @@ namespace hki_2025_registration.Models.ViewModels
         public string Contact { get; set; }
 
         [EmailAddress(ErrorMessage = "Invalid email format.")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         public string Area { get; set; }
 
@@ -34,7 +34,7 @@ namespace hki_2025_registration.Models.ViewModels
                 Name = Name,
                 FatherName = FatherName,
                 Contact = Contact,
-                Email = Email,
+                Email = Email ?? "Not Given",
                 Area = Area,
                 Address = Address,
                 Institute = Institute,
