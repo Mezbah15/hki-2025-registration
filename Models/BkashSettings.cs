@@ -8,6 +8,5 @@ namespace hki_2025_registration.Models
         public string AppKey { get; set; }
         public string AppSecret { get; set; }
         public string CallbackUrl { get; set; }
-        public int Amount { get; internal set; }
     }
 }

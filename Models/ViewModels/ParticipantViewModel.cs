@@ -1,4 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Amazon.Runtime;
+using Amazon.S3;
+using Amazon.S3.Model;
+using Amazon.S3.Transfer;
+using System.ComponentModel.DataAnnotations;
 
 namespace hki_2025_registration.Models.ViewModels
 {
@@ -42,7 +46,7 @@ namespace hki_2025_registration.Models.ViewModels
                 Choice = Choice,
                 CreatePaymentResponse = "test",
                 InvoiceNumber = GenerateInvoiceNumber(),
-                Image = await SaveImageAsync(Image),
+                Image = await SaveImageToS3Async(Image),
             };
 
             return participant;
@@ -69,6 +73,49 @@ namespace hki_2025_registration.Models.ViewModels
             }
 
             return imageFileName;
+        }
+
+        private async Task<string> SaveImageToS3Async(IFormFile image)
+        {
+            try
+            {
+                var accessKey = "0b34a74083a35c11e4590d9ee09757ad";
+                var secretKey = "a3118d0c2526d3cdddcf1b5b77b1c5f03fa0e6b213cabedf4a39ffd58dc34ad0";
+                var bucketName = "ski-images";
+                var credentials = new BasicAWSCredentials(accessKey, secretKey);
+
+                var imageFileName = $"{Guid.NewGuid()}_{image.FileName}";
+
+                var config = new AmazonS3Config
+                {
+                    ServiceURL = "https://366cf6bcdccea547e047ba7c26b080c1.r2.cloudflarestorage.com/ski-images",
+                };
+
+                using (var s3Client = new AmazonS3Client(credentials, config))
+                {
+                    using (var newMemoryStream = new MemoryStream())
+                    {
+                        image.CopyTo(newMemoryStream);
+
+                        var request = new PutObjectRequest
+                        {
+                            Key = imageFileName,
+                            BucketName = bucketName,
+                            InputStream = newMemoryStream,
+                            DisablePayloadSigning = true
+                        };
+
+                        var response = await s3Client.PutObjectAsync(request);
+                    }
+                }
+
+                return imageFileName;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

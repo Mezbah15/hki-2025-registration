@@ -40,23 +40,23 @@ namespace hki_2025_registration.Controllers
                 return View(model);
 
             //Image Validation
-            var extension = Path.GetExtension(model.Image.FileName);
-            var size = model.Image.Length;
-            if (extension == ".png" || extension == ".jpg" || extension == ".jpeg")
-            {
-                if (size > 1048576)
-                {
-                    TempData["SizeError"] = "Size must be less than 1 MB";
+            //var extension = Path.GetExtension(model.Image.FileName);
+            //var size = model.Image.Length;
+            //if (extension == ".png" || extension == ".jpg" || extension == ".jpeg")
+            //{
+            //    if (size > 1048576)
+            //    {
+            //        TempData["SizeError"] = "Size must be less than 1 MB";
 
-                    return View(model);
-                }
-            }
-            else
-            {
-                TempData["ExtensionError"] = "Must be a png, jpg or jpeg";
+            //        return View(model);
+            //    }
+            //}
+            //else
+            //{
+            //    TempData["ExtensionError"] = "Must be a png, jpg or jpeg";
 
-                return View(model);
-            }
+            //    return View(model);
+            //}
 
             try
             {
@@ -74,7 +74,7 @@ namespace hki_2025_registration.Controllers
                 }
 
                 var participant = await model.ToDomainAsync();
-                var paymentResponse = await _bkashService.CreatePaymentAsync(participant.InvoiceNumber, _bkashSettings.Amount, participant.Contact);
+                var paymentResponse = await _bkashService.CreatePaymentAsync(participant.InvoiceNumber, 1, participant.Contact);
                 participant.CreatePaymentResponse = JsonConvert.SerializeObject(paymentResponse);
                 participant.PaymentId = paymentResponse.paymentID;
                 participant.PaymentStatus = paymentResponse.transactionStatus;
