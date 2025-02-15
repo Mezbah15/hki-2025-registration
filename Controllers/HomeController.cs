@@ -180,6 +180,13 @@ namespace hki_2025_registration.Controllers
                 Participant = participant
             };
 
+            var imageUrl = $"https://storage.hki-2025.com/ski-images/{participant.Image}";
+            using (var client = new HttpClient())
+            {
+                var imageBytes = await client.GetByteArrayAsync(imageUrl);
+                var base64Image = Convert.ToBase64String(imageBytes);
+                model.Base64Image = base64Image;
+            }
             //var pdf = new ViewAsPdf("_AdmitPartial", model, null, true)
             //{
             //    FileName = $"{model.Participant.InvoiceNumber}.pdf",

@@ -19,8 +19,10 @@
 }
 else
 {
-    <div class="content-holder">
-        @Html.Partial("_AdmitPartial", Model)
+    <div class="content-holder" style="display:flex; align-items:center; justify-content:center">
+        <div>
+            @Html.Partial("_AdmitPartial", Model)
+        </div>
     </div>
     <br/>
     <button class="btn btn-lg btn-success" id="cmd" style="display: block; margin: 0 auto;">Download PDF</button>

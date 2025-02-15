@@ -4,5 +4,6 @@
     {
         public Participant Participant { get; set; }
         public byte[] InvoiceBytes { get; set; }
+        public string Base64Image { get; set; }
     }
 }
