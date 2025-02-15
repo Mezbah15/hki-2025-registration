@@ -1,0 +1,74 @@
+﻿@using hki_2025_registration.PaginationHelper
+@model PaginatedList<hki_2025_registration.Models.ShopKeeper>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <div>
+        <a asp-action="PartiCipant1318" class="btn btn-outline-primary">List of Participant</a>
+    </div>
+    <h3 style="margin-left: 30rem; color:darkcyan"> List of Participant</h3>
+</div>
+
+<table class="table table-hover table-responsive table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Column Number
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Shop Type
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var shop in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => shop.Id)
+                </td> <td>
+                    @Html.DisplayFor(modelItem => shop.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => shop.Contact)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => shop.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => shop.Description)
+                </td>
+                @*   <td>
+                    <img src="~/Images/@participant.Image" style="height: 100px; width: 100px; border:solid 1px; border-color: gray" />
+                </td> *@
+            </tr>
+        }
+    </tbody>
+</table>
+
+@* Paging *@
+@{
+    var prevDisabled = Model.HasPreviousPage ? "" : "disabled";
+    var nextDisabled = Model.HasNextPage ? "" : "disabled";
+}
+
+<a asp-action="PartiCipant1318" asp-route-pageIndex="@(Model.PageIndex > 1 ? Model.PageIndex - 1 : 1)"
+   class="btn btn-outline-primary @prevDisabled">
+    Previous
+</a>
+
+<a asp-action="PartiCipant1318" asp-route-pageIndex="@(Model.PageIndex + 1)"
+   class="btn btn-outline-primary @nextDisabled">
+    Next
+</a>
