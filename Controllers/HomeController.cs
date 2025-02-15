@@ -104,6 +104,8 @@ namespace hki_2025_registration.Controllers
                 _logger.LogInformation("Callback received from IP: {IpAddress}, apiVersion: {ApiVersion}, product: {Product}, paymentID: {PaymentID}, status: {Status}, signature: {Signature}", ipAddress, apiVersion, product, paymentID, status, signature);
 
                 var participant = await _context.Participants.FirstOrDefaultAsync(p => p.PaymentId == paymentID);
+                if(participant?.PaymentStatus == "Success") return RedirectToAction("AdmitCard", new { MobileNumber = participant.Contact });
+
                 var data = JsonConvert.SerializeObject(participant);
                 if (participant == null)
                 {
@@ -127,7 +129,7 @@ namespace hki_2025_registration.Controllers
                         }
                         else
                         {
-                            participant.PaymentStatus = $"Failure while execute {JsonConvert.SerializeObject(response)}";
+                            participant.CreatePaymentResponse = $"Failure while execute {JsonConvert.SerializeObject(response)}";
                             _logger.LogInformation("Failure while execute for participant {ParticipantId} with payment ID {PaymentId}. {Response}", participant.Id, paymentID, JsonConvert.SerializeObject(response));
                         }
                     }
