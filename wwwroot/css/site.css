@@ -124,6 +124,12 @@ form-body {
     text-align: center;
     margin: auto;
     font-family: Arial, sans-serif;
+    margin-top: 90px
+}
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+    #rules-container {
+        margin-top: 10px; /* Applied to mobile devices */
+    }
 }
 
 .competition-rules h1 {
