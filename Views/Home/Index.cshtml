@@ -219,7 +219,7 @@
 					<p style="color:darkred">যেকোনো সমস্যায় কল করুন 01750-833999</p>
 				</div>
 				<div class="p-3">
-				<a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="AdmitCard"><p>এডমিট ডাউনলোড করুন</p></a>
+				<a id="reg-card-custom-btn" class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="AdmitCard"><p>এডমিট ডাউনলোড করুন</p></a>
 				</div>
 			</div>
 
@@ -277,7 +277,8 @@
 						</div>
 
 						<div class="mb-3">
-							<label asp-for="Institute" class="form-label">শিক্ষা প্রতিষ্ঠানের নাম:</label>
+							<label asp-for="Institute" class="form-label">
+								শিক্ষা প্রতিষ্ঠানের নাম যদি থাকে:</label>
 							<input asp-for="Institute" class="form-control">
 						</div>
 
