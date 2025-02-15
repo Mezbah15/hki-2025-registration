@@ -23,7 +23,7 @@ namespace hki_2025_registration.Models.ViewModels
 
         public string Address { get; set; }
 
-        public string Institute { get; set; }
+        public string? Institute { get; set; }
 
         [Required(ErrorMessage = "Date of Birth is Required")]
         public DateOnly DoB { get; set; } = new DateOnly(2009, 1, 1);
@@ -38,10 +38,10 @@ namespace hki_2025_registration.Models.ViewModels
                 Name = Name,
                 FatherName = FatherName,
                 Contact = Contact,
-                Email = Email ?? "Not Given",
+                Email = Email ?? "",
                 Area = Area,
                 Address = Address,
-                Institute = Institute,
+                Institute = Institute ?? "",
                 DoB = DoB,
                 Choice = Choice,
                 CreatePaymentResponse = "test",

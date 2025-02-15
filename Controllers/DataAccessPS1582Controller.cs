@@ -16,11 +16,13 @@ namespace hki_2025_registration.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> PartiCipant1318(int? pageIndex)
+        public async Task<IActionResult> PartiCipant1318(int? pageIndex, bool showSuccess = false)
         {
             int pageSize = 50;
 
-            var query = _context.Participants.AsQueryable();
+            IQueryable<Participant>? query = _context.Participants.AsQueryable();
+            if(showSuccess)
+                query = query.Where(p => p.PaymentStatus == "Success");
 
             var paginatedList = await PaginatedList<Participant>.CreateAsync(query, pageIndex ?? 1, pageSize);
 
