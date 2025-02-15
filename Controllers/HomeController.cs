@@ -1,13 +1,12 @@
 ﻿using System.Diagnostics;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using Aspose.Pdf;
-using Aspose.Pdf.Text;
 using hki_2025_registration.Models;
 using hki_2025_registration.Models.ViewModels;
 using hki_2025_registration.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
 namespace hki_2025_registration.Controllers
@@ -17,18 +16,15 @@ namespace hki_2025_registration.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
         private readonly BkashService _bkashService;
-        private readonly EmailService _emailService;
-        private readonly PdfService _pdfService;
+        private readonly BkashSettings _bkashSettings;
 
         public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, 
-            BkashService bkashService, EmailService emailService,
-            PdfService pdfService)
+            BkashService bkashService, IOptions<BkashSettings> bkashSettings)
         {
             _logger = logger;
             _context = context;
             _bkashService = bkashService;
-            _emailService = emailService;
-            this._pdfService = pdfService;
+            _bkashSettings = bkashSettings.Value;
         }
 
         public IActionResult Index()
@@ -44,23 +40,23 @@ namespace hki_2025_registration.Controllers
                 return View(model);
 
             //Image Validation
-            var extension = Path.GetExtension(model.Image.FileName);
-            var size = model.Image.Length;
-            if (extension == ".png" || extension == ".jpg" || extension == ".jpeg")
-            {
-                if (size > 1048576)
-                {
-                    TempData["SizeError"] = "Size must be less than 1 MB";
+            //var extension = Path.GetExtension(model.Image.FileName);
+            //var size = model.Image.Length;
+            //if (extension == ".png" || extension == ".jpg" || extension == ".jpeg")
+            //{
+            //    if (size > 1048576)
+            //    {
+            //        TempData["SizeError"] = "Size must be less than 1 MB";
 
-                    return View(model);
-                }
-            }
-            else
-            {
-                TempData["ExtensionError"] = "Must be a png, jpg or jpeg";
+            //        return View(model);
+            //    }
+            //}
+            //else
+            //{
+            //    TempData["ExtensionError"] = "Must be a png, jpg or jpeg";
 
-                return View(model);
-            }
+            //    return View(model);
+            //}
 
             try
             {
@@ -78,7 +74,7 @@ namespace hki_2025_registration.Controllers
                 }
 
                 var participant = await model.ToDomainAsync();
-                var paymentResponse = await _bkashService.CreatePaymentAsync(participant.InvoiceNumber, 1, participant.Contact);
+                var paymentResponse = await _bkashService.CreatePaymentAsync(participant.InvoiceNumber, 200, participant.Contact);
                 participant.CreatePaymentResponse = JsonConvert.SerializeObject(paymentResponse);
                 participant.PaymentId = paymentResponse.paymentID;
                 participant.PaymentStatus = paymentResponse.transactionStatus;
@@ -155,7 +151,12 @@ namespace hki_2025_registration.Controllers
             }
 
             // Return failure view
-            return View("PaymentFailure");
+            return RedirectToAction("PaymentFailure");
+        }
+
+        public IActionResult PaymentFailure()
+        {
+            return View();
         }
 
         [HttpGet]
@@ -179,6 +180,15 @@ namespace hki_2025_registration.Controllers
                 Participant = participant
             };
 
+            //var pdf = new ViewAsPdf("_AdmitPartial", model, null, true)
+            //{
+            //    FileName = $"{model.Participant.InvoiceNumber}.pdf",
+            //    PageSize = Rotativa.AspNetCore.Options.Size.A4,
+            //    PageMargins = new Rotativa.AspNetCore.Options.Margins(10, 10, 10, 10),
+            //    CustomSwitches = "--encoding utf-8 --disable-smart-shrinking --load-media-error-handling ignore --load-error-handling ignore"
+            //};
+
+            //return pdf;
             return View(model);
         }
 

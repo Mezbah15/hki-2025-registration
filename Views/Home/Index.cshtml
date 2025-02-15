@@ -194,7 +194,6 @@
 					<ul class="list-unstyled">
 						<li>✅ <b> একই মোবাইল নাম্বার দিয়ে </b> একের অধিক আবেদন করা যাবে না।
 						</li>
-						<li>✅ <b>ছবির আকার</b>: ১ এমবির কম হতে হবে।</li>
 						<li>✅ <b>আপনার বিকাশে কমপক্ষে ২০০ টাকা </b> থাকতে হবে।</li>
 					</ul>
 					<br />
@@ -291,8 +290,6 @@
 							<input asp-for="Image" class="form-control" type="file">
 							<span asp-validation-for="Image" class="text-danger"></span>
 						</div>
-						<p style="color:red">@TempData["ExtensionError"] </p>
-						<p style="color:red">@TempData["SizeError"] </p>
 
 						<button type="submit" class="btn btn-primary w-100">Pay with Bkash</button>
 					</form>
@@ -362,4 +359,24 @@
 
 @section Scripts {
 	<partial name="_ValidationScriptsPartial" />
+
+	<script>
+		document.querySelector('input[type="file"]').addEventListener('change', function (e) {
+			const file = e.target.files[0];
+			if (file) {
+				const fileType = file.type;
+				const fileSize = file.size / 1024; // size in KB
+				const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+				const maxSize = 10000; 
+
+				if (!allowedTypes.includes(fileType)) {
+					alert('Only JPEG, PNG, and WEBP files are allowed.');
+					e.target.value = ''; // Clear the input
+				} else if (fileSize > maxSize) {
+					alert('File size must be less than 10Mb.');
+					e.target.value = ''; // Clear the input
+				}
+			}
+		});
+	</script>
 }

@@ -4,40 +4,8 @@
     ViewData["Title"] = "প্রবেশপত্র - ২০২৫";
 }
 
-<style>
-    .text-center {
-        text-align: center;
-    }
-
-    .admission-form {
-        border: 1px solid #ddd;
-        padding: 20px;
-        margin: 20px 0;
-        background-color: #f9f9f9;
-    }
-
-        .admission-form h3 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .admission-form p {
-            font-size: 16px;
-            margin: 5px 0;
-        }
-
-    .footer {
-        margin-top: 20px;
-        font-size: 14px;
-        color: #555;
-    }
-
-        .footer p {
-            margin: 5px 0;
-        }
-</style>
-
-@if(Model.Participant == null){
+@if (Model.Participant == null)
+{
     <div class="content container my-5 p-5 border col-md-8">
         <h2 class="text-center">Enter Mobile Number</h2>
         <form asp-action="AdmitCard" method="get">
@@ -49,48 +17,13 @@
         </form>
     </div>
 }
-else{
-    <div class="content container my-5 p-5 border">
-        <br />
-        <br />
-        <h2 class="text-center display-7 fw-bold">হামদ্-নাত, কিরাত ও ইসলামিক সাধারণ জ্ঞান প্রতিযোগীতা - ২০২৫</h2>
-        <p class="text-center fs-4">স্থান: হারাগাছ বহুমুখী উচ্চ বিদ্যালয়। <br /> হারাগাছ পৌরসভা, কাউনিয়া, রংপুর।</p>
-        <br />
-        <div class="admission-form border p-4">
-            <h3 class="fw-bold">প্রবেশপত্র</h3>
-            <div class="row d-flex flex-column-reverse flex-md-row">
-                <!-- Details Column -->
-                <div class="col-12 col-md-8">
-                    <div class="form-details">
-                        <p class="fs-5"><strong>ট্রাকিং নম্বর:</strong> @Model.Participant.InvoiceNumber</p>
-                        <p class="fs-5"><strong>প্রতিযোগীতার বিষয়:</strong> @Model.Participant.Choice</p>
-                        <p class="fs-5"><strong>নাম:</strong> @Model.Participant.Name</p>
-                        <p class="fs-5"><strong>পিতার নাম:</strong> @Model.Participant.FatherName</p>
-                        <p class="fs-5"><strong>জন্মতারিখ:</strong> @Model.Participant.DoB.ToString("dd-MM-yyyy")</p>
-                        <p class="fs-5"><strong>মোবাইল নম্বর:</strong> @Model.Participant.Contact</p>
-                        <p class="fs-5"><strong>ই-মেইল:</strong> @Model.Participant.Email</p>
-                        <p class="fs-5"><strong>এলাকা:</strong> @Model.Participant.Area</p>
-                        <p class="fs-5"><strong>ঠিকানা:</strong> @Model.Participant.Address</p>
-                    </div>
-                </div>
-                <!-- Image Column (Placed First on Mobile) -->
-                <div class="col-12 col-md-4 mb-3 mb-md-0 text-center">
-                    <div class="participant-image">
-                        <img src="/images/@Model.Participant.Image" alt="Participant Image" class="rounded border"
-                             style="width: 150px; height: 150px; object-fit: cover;">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br />
-        <div class="footer">
-            <p class="fs-6">
-                ১. সকল প্রতিযোগীতা হারাগাছ বহুমুখী উচ্চ বিদ্যালয়ে (হারাগাছ পৌরসভা, কাউনিয়া, রংপুর) অনুষ্ঠিত হবে ইনশাআল্লাহ।</p>
-            <p class="fs-6">২. আপনার প্রতিযোগীতার তারিখ ও সময় মোবাইল নাম্বারে এস এম এস-এর মাধ্যমে জানানো হবে ইনশাআল্লাহ।</p>
-            <p class="fs-6">৩. প্রতিযোগীকে অবশ্যই এডমিটের প্রিন্ট সাথে নিয়ে আসতে হবে।</p>
-        </div>
+else
+{
+    <div class="content-holder">
+        @Html.Partial("_AdmitPartial", Model)
     </div>
-    <button class="btn btn-success" id="cmd" style="display: block; margin: 0 auto;">Download PDF</button>
+    <br/>
+    <button class="btn btn-lg btn-success" id="cmd" style="display: block; margin: 0 auto;">Download PDF</button>
 
 }
 
@@ -104,9 +37,6 @@ else{
         });
 
         function CreatePDFfromHTML() {
-            // var HTML_Width = 595.28;
-            // var HTML_Height = $(".content").height();
-
             var HTML_Width = 595.28;
             var originalWidth = $(".content").width();
             var originalHeight = $(".content").height();
