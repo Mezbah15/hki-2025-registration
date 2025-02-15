@@ -10,6 +10,13 @@
 	📢
 </marquee>
 
+@if (ViewBag.Error != null)
+{
+	<div class="alert alert-danger" role="alert">
+		@ViewBag.Error
+	</div>
+}
+
 <section class="container custom-section">
 	<div class="row justify-content-center">
 		<div class="col-md-10">

@@ -62,14 +62,16 @@ namespace hki_2025_registration.Controllers
             {
                 if (!Regex.IsMatch(model.Contact, @"^01[3-9]\d{8}$"))
                 {
-                    ModelState.AddModelError("Contact", "Invalid contact number format.");
+                    ModelState.AddModelError("Contact", $"{model.Contact} মোবাইল নাম্বারটি সঠিক নয়।");
+                    ViewBag.Error = $"{model.Contact} মোবাইল নাম্বারটি সঠিক নয়।";
                     return View(model);
                 }
 
                 var existingParticipant = await _context.Participants.FirstOrDefaultAsync(p => p.Contact == model.Contact && p.PaymentStatus == "Success");
                 if (existingParticipant != null)
                 {
-                    ModelState.AddModelError("Contact", "এই নাম্বার দিয়ে পূর্বে আবেদন করা হয়েছে, অনুগ্রহপূর্বক অন্য নাম্বার ব্যবহার করুন।");
+                    ViewBag.Error = $"{model.Contact} এই নাম্বার দিয়ে পূর্বে আবেদন করা হয়েছে, অনুগ্রহপূর্বক অন্য নাম্বার ব্যবহার করুন।";
+                    ModelState.AddModelError("Contact", $"{model.Contact} এই নাম্বার দিয়ে পূর্বে আবেদন করা হয়েছে, অনুগ্রহপূর্বক অন্য নাম্বার ব্যবহার করুন।");
                     return View(model);
                 }
 
