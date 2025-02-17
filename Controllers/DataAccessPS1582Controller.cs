@@ -16,7 +16,7 @@ namespace hki_2025_registration.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> PartiCipant1318(int? pageIndex, bool showSuccess = false)
+        public async Task<IActionResult> PartiCipant1318(int? pageIndex, bool showSuccess = true)
         {
             int pageSize = 50;
 
