@@ -47,11 +47,16 @@
         </tr>
     </thead>
     <tbody>
+
+        @{
+            int counter = 1;
+        }
+
         @foreach (var participant in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => participant.Id)
+                    @counter
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => participant.Area)
@@ -80,10 +85,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => participant.Institute)
                 </td>
-              @*   <td>
-                    <img src="~/Images/@participant.Image" style="height: 100px; width: 100px; border:solid 1px; border-color: gray" />
-                </td> *@
             </tr>
+
+            counter++;
         }
     </tbody>
 </table>
